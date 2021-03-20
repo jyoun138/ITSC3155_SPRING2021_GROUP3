@@ -1,0 +1,8 @@
+* Our goals as a group last week was to produce a starting document that contains a lot of important
+information that we will need throughout the project. We also created the GitHub repo that our project
+commits will be saved in.
+* Our goals this week is to create the Trillo agile card page that will contain all the tasks that
+need to be done, are in the process of being done, and all task that we have finished. We also confirmed
+that all members of the group can pull and push to the repo
+* Next week we plan on laying some of the ground work for the projects. Namely setting expectations for
+each member of the group.
