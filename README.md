@@ -6,3 +6,4 @@ Members:
 
 
 Jai Tabora
+Ethan Vang
