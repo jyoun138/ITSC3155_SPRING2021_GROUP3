@@ -1,6 +1,19 @@
-  * 1. Next week, we have to discuss about context and level 1 data flow diagrams since we have to create one for our pages of our application. So we will most likely meet on Thursday to discuss about it for Sprint 3. We will also have to update our mockup prototypes and backlogs to meet the requirements for Sprint 3. We will also discuss who will be the next members to create weekly agenda and weekly status report.
+  * 1. Next week, we have to discuss about context and level 1 data flow diagrams since we have to create
+one for our pages of our application. So we will most likely meet on Thursday to discuss about it for Sprint 3.
+We will also have to update our mockup prototypes and backlogs to meet the requirements for Sprint 3.
+We will also discuss who will be the next members to create weekly agenda and weekly status report.
 
-* 2. This week I had to create a model and an association for the previous pages I made least week which were the create user or register page and it was easy to do with the help of my group members explaining the attribute, data type, and variable name. Also had to modify the mockups we made last week by adding routes to pages of our application, like we did in the flask app assignment, but made it specific based on the purpose of the page. Some of my group members had to add parameters to their pages and GET and POST methods. I did learn how to create a model and an association for the pages of our application we are creating. I just asked my group members questions about the things I did not understand about the model and association but besides that there is nothing else I got stuck on.
+* 2. This week I had to create a model and an association for the previous pages I made least week which
+were the create user or register page and it was easy to do with the help of my group members explaining
+the attribute, data type, and variable name. Also had to modify the mockups we made last week by adding routes
+to pages of our application, like we did in the flask app assignment, but made it specific based on the purpose of the page.
+Some of my group members had to add parameters to their pages and GET and POST methods. I did learn how to
+create a model and an association for the pages of our application we are creating. I just asked my group members
+questions about the things I did not understand about the model and association but besides that there is nothing else I got stuck on.
 
-* 3. Next week, we will have to begin testing the features of our application by creating examples of how it be used and look more into the user stories for our features also. We will most likely meet on Thursday to discuss about it for Sprint 4. We will have to create feature files so we have to look into how those are created and explain the purpose of our features from our user stories. We will also discuss who will be the next members to create weekly agenda and weekly status report.
+* 3. Next week, we will have to begin testing the features of our application by creating examples of how it
+be used and look more into the user stories for our features also. We will most likely meet on Thursday to discuss
+about it for Sprint 4. We will have to create feature files so we have to look into how those are created and
+explain the purpose of our features from our user stories. We will also discuss who will be the next members to
+create weekly agenda and weekly status report.
 
