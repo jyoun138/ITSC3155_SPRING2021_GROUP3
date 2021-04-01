@@ -1,0 +1,18 @@
+  * 1. Next week, we have to discuss about the ethical consideration for our product so we most
+likely will meet on Tuesday or Thursday to discuss about it. We also have to include the possible
+misuses of some the additional implementation we came up with. I am pretty sure next week that Matthew
+said he was going to be next to work on the group weekly status. We were able to complete all of the
+things we wanted to get done this week so the next week will focus on the new topic and assignment.
+
+* 2. This week I had I had to create a mockup for the user login and user registration pages for our
+application. After that I had to combine my mockups with the rest of our group’s mockups to complete
+part B of Sprint 2. It worked out pretty well since we just assigned ourselves the pages that needed
+to be done for the Sprint. I did learn how to create a storyboard for the pages of our application
+we are creating. I did not have any trouble doing anything or get stuck while working.
+
+* 3. Next week, we have to discuss about context and level 1 data flow diagrams since we have to
+create one for our pages of our application. So we will most likely meet on Thursday to discuss
+about it for Sprint 3. We will also have to update our mockup prototypes and backlogs to meet the
+requirements for Sprint 3. We will also discuss who will be the next members to create weekly
+agenda and weekly status report.
+

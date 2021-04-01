@@ -7,3 +7,4 @@ Members:
 
 Jai Tabora
 Ethan Vang
+Timothy Cottrell

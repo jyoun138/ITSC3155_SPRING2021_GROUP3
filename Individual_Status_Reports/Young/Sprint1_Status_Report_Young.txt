@@ -1,0 +1,18 @@
+* Each member will identify at least three characteristics of a scheduling app (such as meetup.com).
+Create GitHub repository and grant each user editor access: complete. Create agenda for the week.
+Create Project milestone 0 (share with group members) 
+
+* This week I had to create a Trello account and join the dashboard that includes all the group members.
+After that I had to make sure everyone had access to the repository since I made it and had to add them
+as collaborators. For this weekly we had to create a backlog for additional features to implement into the
+app and also create two user stories per each group member. It worked out pretty well creating the user
+stories since we have previously done it before. I did not learn anything new this week. I also did not
+have any trouble doing anything or get stuck while working.
+
+* Next week, we have to discuss about the ethical consideration for our product so we most likely will
+meet on Tuesday or Thursday to discuss about it. We also have to include the possible misuses of some
+the additional implementation we came up with. I am pretty sure next week that Matthew said he was going
+to be next to work on the group weekly status. We were able to complete all of the things we wanted to
+get done this week so the next week will focus on the new topic and assignment. 
+
+
