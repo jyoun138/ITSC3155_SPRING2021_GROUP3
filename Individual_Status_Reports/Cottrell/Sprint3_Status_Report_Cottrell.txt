@@ -1,0 +1,7 @@
+* The goal from last week was to get the database set up and get a prototype application that launchs.
+While the group doesn't have a working prototype, I myself have been playing around with flask and sqlite
+and have a lot of work twords the project.
+* This week we worked on the dataflow diagram and the level 1 diagram, additionally we added fuction names
+and datatypes for the logic that we will be using for the application.
+* Next week I hope that the group starts working on the actual application, getting a working prototype will
+be my personal goal.
