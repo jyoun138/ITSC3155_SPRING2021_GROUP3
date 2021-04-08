@@ -1,6 +1,0 @@
-* This past week we planed  some of the ground work for the project. Namely setting expectations for
-each member of the group.
-* This week I worked on learning more about flask and how our final product will actually look like.
-The group worked together to create a storybourd for the application and mockups for each of the screens.
-* Next week I hope to get a SQL database set up for the app and actually create the first prodotype for the
-application.
