@@ -1,0 +1,5 @@
+* The goal from last week was to get a working prototype. We created a solid blank canvas of an application
+so that we can cleanly develop something for this project.
+* This week we worked on creating the features for all the pages that we plan on creating.
+* Next week I hope to actually start getting work spread out to each of the members of the team so that we 
+all have an even amount of work.
