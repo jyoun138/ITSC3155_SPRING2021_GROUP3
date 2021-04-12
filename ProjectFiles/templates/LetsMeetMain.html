@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="LetsMeet">
+        <title>LetsMeet</title>
+        <!-- styles -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/LetsMeetStylesheet.css') }}">
+    </head>
+    <body>
+        <nav>
+            <a href="{{ url_for('index') }}"> Home</a> ||
+            <a href="{{ url_for('get_events') }}"> My Events</a> ||
+            <a href="{{ url_for('new_event') }}">Add Event</a> ||
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </nav>
+
+        <h1>Welcome {{user}} to the LetsMeet Site!</h1>
+
+        <table>
+            <caption>Calender</caption>
+            <tr>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+                <th>Sunday</th>
+            </tr>
+            {% for t in range(math.ceil(sum(calendar.monthrange(today.year, today.month))-1/7)) %}
+            <tr>
+                {% for i in range(7) %}
+                    {% if i+(t*7)+1 <= sum(calendar.monthrange(today.year, today.month)) %}
+                        <td>
+                            {% if i+(t*7)+1 > calendar.monthrange(today.year, today.month)[0] %}
+                                {{ i+(t*7)+1-calendar.monthrange(today.year, today.month)[0] }}
+                                {% for index, event in enumerate(eventDates, start=0) %}
+                                    {% if date(today.year, today.month, i+(t*7)+1-calendar.monthrange(today.year, today.month)[0]) == date.fromisoformat(event) %}
+                                        {{ events[index] }}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

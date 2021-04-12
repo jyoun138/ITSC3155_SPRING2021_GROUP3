@@ -1,0 +1,25 @@
+body {
+    padding: 30px 30px;
+    }
+h1{
+    color:rgb(60, 71, 228);
+}
+h2{
+    color:rgb(228, 47, 47);
+    background:rgb(60, 71, 228);
+}
+table {
+    width: 100%;
+}
+th {
+    height: 10px;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    background-color:rgb(95, 95, 192);
+}
+td {
+    padding: 10px;
+    height: 10ex;
+}

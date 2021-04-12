@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="LetsMeet">
+        <title>LetsMeet</title>
+        <!-- styles -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/LetsMeetStylesheet.css') }}">
+    </head>
+    <body>
+        <nav>
+            <a href="{{ url_for('index') }}"> Home</a> ||
+            <a href="{{ url_for('get_events') }}"> My Events</a> ||
+            <a href="{{ url_for('new_event') }}">Add Event</a> ||
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </nav>
+
+        <h1>Welcome {{user}} to the LetsMeet App!</h1>
+
+        <h1>Event detials</h1>
+
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Text</th>
+                <th>Date</th>
+            </tr>
+            <tr>
+                <td>{{ event.title }}</td>
+                <td>{{ event.text }}</td>
+                <td>{{ event.date }}</td>
+            </tr>
+        </table>
+
+        <a href="{{ url_for('remove_event', event_id=event.id) }}">Remove Event</a>
+
+    </body>
+</html>

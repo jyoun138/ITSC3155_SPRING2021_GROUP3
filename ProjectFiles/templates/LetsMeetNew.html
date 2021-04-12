@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="LetsMeet">
+        <title>LetsMeet</title>
+        <!-- styles -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/LetsMeetStylesheet.css') }}">
+    </head>
+    <body>
+       <nav>
+        <a href="{{ url_for('index') }}">Home</a> ||
+        <a href="{{ url_for('get_events') }}">My Events</a> ||
+        <a href="{{ url_for('new_event') }}">Add Event</a> ||
+        <a href="{{ url_for('logout') }}">Logout</a>
+       </nav>
+
+        <h1>Welcome {{user}} to the LetsMeet Site!</h1>
+        
+        <form action="new" method="post">
+            <div class="form-field">{{ form.title.label }} {{ form.title }}
+                {% if form.title.errors %}
+                <ul class="errors">
+                    {% for error in form.title.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <div class="form-field">{{ form.eventText.label }} {{ form.eventText }}
+                {% if form.eventText.errors %}
+                <ul class="errors">
+                    {% for error in form.eventText.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <div class="form-field">{{ form.eventDate.label }} 
+                <input type="date" id="eventDate" name="eventDate"
+                    value="{{ today.isoformat() }}"
+                    min="{{ today.isoformat() }}">
+                {% if form.eventDate.errors %}
+                <ul class="errors">
+                    {% for error in form.eventDate.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            {{ form.submit }}
+
+        </form>
+    </body>
+</html>

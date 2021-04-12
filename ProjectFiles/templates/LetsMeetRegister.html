@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="LetsMeet">
+        <title>LetsMeet</title>
+        <!-- styles -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/LetsMeetStylesheet.css') }}">
+    </head>
+    <body>
+        <nav>
+            <a href="{{ url_for('login') }}">Login</a>
+        </nav>
+
+        <h1>Welcome {{user}} to teh LetsMeet Site!</h1>
+
+        <form method="POST" action="/register">
+            <div class="form-field">{{ form.username.label }} {{ form.username }}
+                {% if form.username.errors %}
+                <ul class="errors">
+                    {% for error in form.username.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <div class="form-field">{{ form.email.label }} {{ form.email }}
+                {% if form.email.errors %}
+                <ul class="errors">
+                    {% for error in form.email.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <div class="form-field">{{ form.password.label }} {{ form.password }}
+                {% if form.password.errors %}
+                <ul class="errors">
+                    {% for error in form.password.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <div class="form-field">{{ form.confirmPassword.label }} {{ form.confirmPassword }}
+                {% if form.confirmPassword.errors %}
+                <ul class="errors">
+                    {% for error in form.confirmPassword.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            {{ form.submit }}
+        </form>
+    </body>
+</html>

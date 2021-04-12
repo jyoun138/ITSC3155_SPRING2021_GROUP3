@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="LetsMeet">
+        <title>LetsMeet</title>
+        <!-- styles -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/LetsMeetStylesheet.css') }}">
+    </head>
+    <body>
+        <nav>
+            <a href="{{ url_for('register') }}">Register</a>
+        </nav>
+
+        <h1>Welcome to the LetsMeet Site!</h1>
+
+        <h1>Login</h1>
+
+        <form action="/login" method="POST">
+            
+            <div class="form-field">{{ form.username.label }} {{ form.username }}
+                {% if form.username.errors %}
+                <ul class="errors">
+                    {% for error in form.username.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+
+            <div class="form-field">{{ form.password.label }} {{ form.password }}
+                {% if form.password.errors %}
+                <ul class="errors">
+                    {% for error in form.password.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+
+            {{ form.submit }}
+        </form>
+
+    </body>
+</html>
