@@ -1,0 +1,19 @@
+  * 1. Next week, we will have to begin testing the features of our application by creating
+examples of how it be used and look more into the user stories for our features also. We will
+most likely meet on Thursday to discuss Sprint 4. We will have to create feature files so we
+have to look into how those are created and explain the purpose of our features from our user
+stories. We will also discuss who will be the next members to create weekly agenda and weekly status report.
+
+* 2. This week I had to create a feature file for registering an account user story, it was
+confusing at first but after reading the Gherkin reference it was easier to create. I also
+had to create two scenarios that unregistered users would face when viewing our application.
+I did learn how to create a feature file using the Gherkin reference. I just asked my group
+members questions about the things I did not understand about creating the feature file and
+which features we should use for the feature files.
+
+* 3. Next week, our goal is to begin to create HTML and CSS code for our application and put
+that into our Github repository. We will most likely meet on Thursday to discuss Sprint 5.
+We will have to discuss the baseline features that we want to implement for the Sprint 5 milestone.
+We will also discuss who will be the next members to create weekly agenda and weekly status report.
+
+
