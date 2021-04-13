@@ -33,7 +33,8 @@
             </tr>
         </table>
 
-        <a href="{{ url_for('remove_event', event_id=event.id) }}">Remove Event</a>
+        <a href="{{ url_for('remove_event', event_id=event.id) }}">Remove Event</a> ||
+        <a href="{{ url_for('edit_event', event_id=event.id) }}">Edit</a>
 
     </body>
 </html>
