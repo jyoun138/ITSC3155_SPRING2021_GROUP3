@@ -23,7 +23,8 @@ class User(db.Model):
     id = db.Column("id", db.Integer, primary_key=True)
     username = db.Column("username", db.String(100))
     password = db.Column("password", db.String(30))
-    events = db.relationship("Event", backref='Creator', lazy=True)
+    events = db.relationship("Event", backref="user", lazy=True)
+
 
     def __init__(self, name, pwd):
         self.username = name

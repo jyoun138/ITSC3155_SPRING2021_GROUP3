@@ -75,7 +75,7 @@ def index():
 @app.route('/events')
 def get_events():
     if session.get('user'):
-        my_events = db.session.query(Event).all()
+        my_events = db.session.query(Event).filter_by(user_id=session['user_id']).all()
         return render_template('LetsMeetEvents.html', events=my_events, user=session['user'])
     return redirect(url_for('login'))
 

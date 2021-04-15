@@ -18,7 +18,7 @@
 
         <h1>Welcome {{user}} to the LetsMeet Site!</h1>
         
-        <form action="new" method="post">
+        <form action="{% if event %}{{ event.id }}{% else %}new{% endif %}" method="post">
             <div class="form-field">{{ form.title.label }} {{ form.title }}
                 {% if form.title.errors %}
                 <ul class="errors">
