@@ -32,9 +32,10 @@
                 <td>{{ event.date }}</td>
             </tr>
         </table>
-
-        <a href="{{ url_for('remove_event', event_id=event.id) }}">Remove Event</a> ||
-        <a href="{{ url_for('edit_event', event_id=event.id) }}">Edit</a>
+        {% if event.user_id == user.id %}
+            <a href="{{ url_for('remove_event', event_id=event.id) }}">Remove Event</a> ||
+            <a href="{{ url_for('edit_event', event_id=event.id) }}">Edit</a>
+        {% endif %}
 
     </body>
 </html>
