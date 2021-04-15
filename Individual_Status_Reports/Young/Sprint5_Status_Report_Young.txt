@@ -1,0 +1,19 @@
+1. Next week, our goal is to begin to create HTML and CSS code for our application and put that
+into our Github repository. We will most likely meet on Thursday to discuss Sprint 5. We will
+have to discuss the baseline features that we want to implement for the Sprint 5 milestone. We
+will also discuss who will be the next members to create weekly agenda and weekly status report.
+
+2. This week there was not much to do since most of the features have been implemented in our group
+project already. The only thing I can do research how to create the RSVP for an event feature since
+that is the only event we have not created. I did learn how to fix the virtual environment issue when
+pulling code from our group repository. My group members informed me that there are a few things to do
+on the Trello so this weekend I am going to look at the least and see what I can complete.
+
+3. Next week, our goal is to begin to create the additional features that we created for our project in
+the beginning of our project and apply CSS to those features, so it is consistent with the rest of the
+application we are creating. We will most likely meet on Thursday to discuss Sprint 6. We will have to
+discuss which of the additional features that we want to implement for the Sprint 6 milestone since we
+want to implement features that will be purposeful for our application. We will also discuss who will
+be the next members to create weekly agenda and weekly status report.
+
+
