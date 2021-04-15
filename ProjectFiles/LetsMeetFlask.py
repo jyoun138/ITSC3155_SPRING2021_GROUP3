@@ -86,7 +86,7 @@ def get_event(event_id):
         return render_template('LetsMeetEvent.html', event=my_event, user=session['user'], user_id=session['user_id'])
     return redirect(url_for('login'))
 
-# Trying to figure out how to add Event id's to Users database (see models.py/Users)
+# Trying to figure out how to add RSVP'd Event id's to Users database (see models.py/Users)
 # @app.route('/events/RSVP/<event_id>')
 # def RSVP_event(event_id):
 #     if session.get('user'):
