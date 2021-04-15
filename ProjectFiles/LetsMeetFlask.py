@@ -107,16 +107,18 @@ def edit_event(event_id):
     if session.get('user'):
         eventForm = EventForm()
         if request.method == 'POST' and eventForm.validate_on_submit():
-            title = request.form['title']
-            text = request.form['eventText']
-            eventDate = request.form['eventDate']
-            new_record = Event(title=title, text=text, date=eventDate, id=session['user_id'])
-            db.session.add(new_record)
+            my_event = db.session.query(Event).filter_by(id=event_id).one()
+            my_event.title = request.form['title']
+            my_event.text = request.form['eventText']
+            my_event.eventDate = request.form['eventDate']
+            db.session.add(my_event)
             db.session.commit()
             return redirect(url_for('get_events'))
         else:
             my_event = db.session.query(Event).filter_by(id=event_id).one()
-            eventForm.title.default = my_event.title
+            eventForm.title.data = my_event.title
+            eventForm.eventText.data = my_event.text
+            eventForm.eventDate.data = my_event.date
             return render_template('LetsMeetNew.html', event=my_event, user=session['user'], form=eventForm,
                                    today=date.today())
     else:

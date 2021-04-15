@@ -39,7 +39,7 @@
             </div>
             <div class="form-field">{{ form.eventDate.label }} 
                 <input type="date" id="eventDate" name="eventDate"
-                    value="{{ today.isoformat() }}"
+                    value="{{ form.eventDate.data }}"
                     min="{{ today.isoformat() }}">
                 {% if form.eventDate.errors %}
                 <ul class="errors">

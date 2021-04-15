@@ -36,11 +36,20 @@
                         <td>
                             {% if i+(t*7)+1 > calendar.monthrange(today.year, today.month)[0] %}
                                 {{ i+(t*7)+1-calendar.monthrange(today.year, today.month)[0] }}
+                                <table>
                                 {% for index, event in enumerate(eventDates, start=0) %}
                                     {% if date(today.year, today.month, i+(t*7)+1-calendar.monthrange(today.year, today.month)[0]) == date.fromisoformat(event) %}
-                                        {{ events[index] }}
+                                    <tr>
+                                        <td>
+                                            <a href="{{ url_for('get_event', event_id=events[index].id) }}">{{ events[index].title }}</a>
+                                        </td>
+                                        <td>
+                                            {{ events[index].date }}
+                                        </td>
+                                    </tr>
                                     {% endif %}
                                 {% endfor %}
+                                </table>
                             {% endif %}
                         </td>
                     {% endif %}
