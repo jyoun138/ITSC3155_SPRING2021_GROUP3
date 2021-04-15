@@ -83,7 +83,7 @@ def get_events():
 def get_event(event_id):
     if session.get('user'):
         my_event = db.session.query(Event).filter_by(id=event_id).one()
-        return render_template('LetsMeetEvent.html', event=my_event, user=session['user'])
+        return render_template('LetsMeetEvent.html', event=my_event, user=session['user'], user_id=session['user_id'])
     return redirect(url_for('login'))
 
 @app.route('/events/new', methods=['GET', 'POST'])
