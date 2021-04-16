@@ -1,0 +1,4 @@
+* Last week we worked on creating the featuree for all the pages that we plan on creating for the meetup
+app
+* This week Me and my team worked on getting all of the base features for the project coded and working.
+* Next week we plan on adding multiple features and cleaning up the html and css for the project.
