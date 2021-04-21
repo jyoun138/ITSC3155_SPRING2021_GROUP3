@@ -87,15 +87,15 @@ def get_event(event_id):
     return redirect(url_for('login'))
 
 # Trying to figure out how to add RSVP'd Event id's to Users database (see models.py/Users)
-# @app.route('/events/RSVP/<event_id>')
-# def RSVP_event(event_id):
-#     if session.get('user'):
-#         user = db.session.query(User).filter_by(id=session['user_id']).one()
-#         my_event = db.session.query(Event).filter_by(id=event_id).one()
-#         user.RSVP_events.append(my_event.id)
-#         return redirect(url_for('get_events'))
-#     else:
-#         return redirect(url_for('login'))
+@app.route('/events/rsvp/<event_id>', methods=['GET', 'POST'])
+def RSVP_event(event_id):
+    if session.get('user'):
+        user = db.session.query(User).filter_by(id=session['user_id']).one()    #do not include this?
+        my_event = db.session.query(Event).filter_by(id=event_id).one()
+        user.RSVP_events.append(my_event.id)
+        return redirect(url_for('get_events'))
+    else:
+        return redirect(url_for('login'))
 
 @app.route('/events/new', methods=['GET', 'POST'])
 def new_event():
