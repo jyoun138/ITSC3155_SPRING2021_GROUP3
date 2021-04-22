@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>LetsMeet: event</title>
-        <link rel="stylesheet" href="../static/styles/LetsMeetStylesheet.css">
-    </head>
+{% extends "base.html" %}
+    {% block content %}
     <body>
         <header>
             <h1>LetsMeet</h1>
@@ -41,17 +34,7 @@
             <a href="{{ url_for('remove_event', event_id=event.id) }}">Remove Event</a> ||
             <a href="{{ url_for('edit_event', event_id=event.id) }}">Edit</a>
         {% else %}
-<<<<<<< HEAD
             <a href="{{ url_for('RSVP_event', event_id=event.id) }}">RSVP for this Event</a>
-=======
-            <a href="{{ url_for('RSVP_event', event_id=event.id) }}">RSVP this event</a>
-        <!--
-            # Trying to figure out how to add RSVP'd Event id's to Users databases
-            <form action="{{ url_for('RSVP_event', event_id=event.id) }}" method="post">
-                <input type="submit" value="RSVP for this Event">
-            </form>
-        -->
->>>>>>> 2efdd5ae23a86901b423f6df85262555df214ea2
         {% endif %}
 
     </body>
@@ -60,4 +43,4 @@
             Group 3: Algos Anonymous project
         </p>
     </footer>
-</html>
+    {% endblock %}
