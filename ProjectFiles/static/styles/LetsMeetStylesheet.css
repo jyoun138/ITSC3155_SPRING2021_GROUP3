@@ -133,18 +133,19 @@ footer {
     font-family: LemonBrush;
     src: url(./LemonBrushFont.otf);
 }
+
 table {
     width: 100%;
-}
+    }
 th {
     height: 10px;
-}
+    }
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
     background-color:rgb(95, 95, 192);
-}
+    }
 td {
     padding: 10px;
     height: 10ex;
-}
+    }
