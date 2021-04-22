@@ -28,12 +28,7 @@
             <a href="{{ url_for('remove_event', event_id=event.id) }}">Remove Event</a> ||
             <a href="{{ url_for('edit_event', event_id=event.id) }}">Edit</a>
         {% else %}
-        <!--
-            # Trying to figure out how to add RSVP'd Event id's to Users databases
-            <form action="{{ url_for('RSVP_event', event_id=event.id) }}" method="post">
-                <input type="submit" value="RSVP for this Event">
-            </form>
-        -->
+            <a href="{{ url_for('RSVP_event', event_id=event.id) }}">RSVP for this Event</a>
         {% endif %}
 
     </body>
