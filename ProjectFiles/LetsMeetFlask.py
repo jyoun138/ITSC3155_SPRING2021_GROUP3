@@ -90,9 +90,15 @@ def get_event(event_id):
 @app.route('/events/rsvp/<event_id>', methods=['GET', 'POST'])
 def RSVP_event(event_id):
     if session.get('user'):
+<<<<<<< HEAD
         new_RSVP = RSVP(session['user_id'], event_id)
         db.session.add(new_RSVP)
         db.session.commit()
+=======
+        user = db.session.query(User).filter_by(id=session['user_id']).one()    #do not include this?
+        my_event = db.session.query(Event).filter_by(id=event_id).one()
+        user.RSVP_events.append(my_event.id)
+>>>>>>> 2efdd5ae23a86901b423f6df85262555df214ea2
         return redirect(url_for('get_events'))
     else:
         return redirect(url_for('login'))

@@ -24,14 +24,22 @@ class User(db.Model):
     username = db.Column("username", db.String(100))
     password = db.Column("password", db.String(30))
     events = db.relationship("Event", backref="user", lazy=True)
+<<<<<<< HEAD
+=======
+    #Trying to figure out a way to save all Event id values into a string that will
+    #be recognized by the database
+    # rsvpEvents = db.Column("rsvpEvents", db.ARRAY(db.Integer, db.ForeignKey('event.id'), dimensions=1))
+>>>>>>> 2efdd5ae23a86901b423f6df85262555df214ea2
 
     def __init__(self, name, pwd):
         self.username = name
         self.password = pwd
+        # self.rsvpEvents = []
 
     def __repr__(self):
         return f"User('{self.id}', '{self.username}, '{self.password}')"
 
+<<<<<<< HEAD
 
 class RSVP(db.Model):
     RSVP_id = db.Column("RSVP_id", db.Integer, primary_key=True)
@@ -44,3 +52,5 @@ class RSVP(db.Model):
 
     def __repr__(self):
         return f"RSVP('{self.user_id}', '{self.event_id}')"
+=======
+>>>>>>> 2efdd5ae23a86901b423f6df85262555df214ea2

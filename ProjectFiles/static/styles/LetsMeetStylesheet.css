@@ -1,12 +1,137 @@
-body {
-    padding: 30px 30px;
-    }
-h1{
-    color:rgb(60, 71, 228);
+html {
+    min-height: 100%;
+    background-size: cover;
+    background: linear-gradient(to bottom, rgb(250, 228, 218), rgb(220, 178, 255));
 }
-h2{
-    color:rgb(228, 47, 47);
-    background:rgb(60, 71, 228);
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    margin: 0 auto;
+    max-width: 850px;
+}
+
+header {
+    background-image: 
+        linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), 
+        url(./indexPic.png);
+        height: 350px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+}
+
+#topNav {
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+}
+
+#topNav li {
+    text-decoration: none;
+    text-align: right;
+    display: inline-block;
+    padding: 0 15px 0 15px;
+    font-size: 150%;
+    margin-top: -15%;
+}
+
+#topNav a {
+    text-decoration: none;
+    color: antiquewhite;
+}
+
+table {
+    color: antiquewhite;
+}
+
+
+/* Formatting for the website's name displayed in the header portion */
+h1 {
+    display: inline-block;
+    font-family: LemonBrush;
+    color: rgb(22, 22, 22);
+    font-size: 650%;
+    padding: -25px 0 -25px 0;
+    margin-top: 0%;
+}
+
+/* Formatting action when the mouse hovers over the top navigation menu items */
+#topNav a:hover {
+    color: rgb(247, 78, 0);
+}
+
+/* formatting for the currently selected page */
+#currPage {
+    color: violet;
+    border: 1px solid whitesmoke;
+    background: url(./redFeather.png) no-repeat left center;
+}
+
+h2, h3 {
+    font-size: larger;
+}
+
+/* Format for the user input */
+form {
+    background-color: #f8f8f8;
+	border: solid 2px #787878;
+	border-radius: 10px;
+	padding: 20px;
+	max-width: 100%;
+    background-color: rgb(237, 237, 237);
+}
+
+/* formatting for the labels for the form input boxes */
+#theLabel {
+	float: left;
+	width: 2em;
+	text-align: right;
+    width: 20%;
+}
+
+#inputForm {
+	margin-left: 2em;
+	margin-bottom: .5em;
+	padding: .25em;
+	font-size: 1em;
+	/* border: 1px solid #999; */
+	/* background-color: whitesmoke; */
+	/* border-radius: 5px; */
+}
+
+#newEventLabel, #dateLabel {
+    float: left;
+    width: 7em;
+    text-align: right;
+    width: 30%;
+}
+
+#newEventInput, #eventDate {
+    margin-left: 12em;
+    margin-bottom: .5em;
+	padding: .25em;
+	font-size: 1em;
+}
+
+#errors {
+    color: red;
+}
+
+/* footer formatting */
+footer {
+    background-color: beige;
+}
+
+/*  
+    Custom font retrieved from 1001fonts.com under permission of 
+    terms of service listed therein. 
+    https://www.1001fonts.com/creamshoes-font.html
+*/
+@font-face {
+    font-family: LemonBrush;
+    src: url(./LemonBrushFont.otf);
 }
 table {
     width: 100%;

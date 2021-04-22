@@ -1,14 +1,27 @@
-{% extends "base.html" %}
-    {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>LetsMeet</title>
+        <link rel="stylesheet" href="../static/styles/LetsMeetStylesheet.css">
+    </head>
     <body>
-        <nav>
-            <a href="{{ url_for('index') }}"> Home</a> ||
-            <a href="{{ url_for('get_events') }}"> My Events</a> ||
-            <a href="{{ url_for('new_event') }}">Add Event</a> ||
-            <a href="{{ url_for('logout') }}">Logout</a>
-        </nav>
+        <header>
+            <h1>LetsMeet</h1>
+            <!-- <br> -->
+            <nav id="topNav">
+                <ul>
+                    <li id="currPage"><a href="{{ url_for('index') }}"> Home</a></li>
+                    <li><a href="{{ url_for('get_events') }}"> My Events</a></li>
+                    <li><a href="{{ url_for('new_event') }}">Add Event</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
 
-        <h1>Welcome {{user}} to the LetsMeet Site!</h1>
+        <h2>Welcome {{user}} to the LetsMeet Site!</h2>
 
         <table>
             <caption>Calender</caption>
@@ -28,20 +41,25 @@
                         <td>
                             {% if i+(t*7)+1 > calendar.monthrange(today.year, today.month)[0] %}
                                 {{ i+(t*7)+1-calendar.monthrange(today.year, today.month)[0] }}
-                                <table>
-                                {% for index, event in enumerate(eventDates, start=0) %}
-                                    {% if date(today.year, today.month, i+(t*7)+1-calendar.monthrange(today.year, today.month)[0]) == date.fromisoformat(event) %}
-                                    <tr>
-                                        <td>
-                                            <a href="{{ url_for('get_event', event_id=events[index].id) }}">{{ events[index].title }}</a>
-                                        </td>
-                                        <td>
-                                            {{ events[index].text }}
-                                        </td>
-                                    </tr>
-                                    {% endif %}
-                                {% endfor %}
-                                </table>
+                                <ul>
+
+                                    <!-- <table> -->
+                                        {% for index, event in enumerate(eventDates, start=0) %}
+                                        {% if date(today.year, today.month, i+(t*7)+1-calendar.monthrange(today.year, today.month)[0]) == date.fromisoformat(event) %}
+                                        <!-- <tr>
+                                            <td> -->
+                                                <li>
+                                                    <a href="{{ url_for('get_event', event_id=events[index].id) }}">{{ events[index].title }}</a>
+                                                </li>
+                                            <!-- </td>
+                                            <td> -->
+                                                <!-- {{ events[index].text }} -->
+                                            <!-- </td>
+                                        </tr> -->
+                                        {% endif %}
+                                        {% endfor %}
+                                    <!-- </table> -->
+                                </ul>
                             {% endif %}
                         </td>
                     {% endif %}
@@ -49,5 +67,13 @@
             </tr>
             {% endfor %}
         </table>
+
+        <br><br><br>
+
     </body>
-    {% endblock %}
+    <footer>
+        <p>
+            Group 3: Algos Anonymous project
+        </p>
+    </footer>
+</html>
