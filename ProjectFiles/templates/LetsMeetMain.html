@@ -1,5 +1,13 @@
-{% extends "base.html" %}
-    {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="LetsMeet">
+        <title>LetsMeet</title>
+        <!-- styles -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/LetsMeetStylesheet.css') }}">
+    </head>
     <body>
         <header>
             <h1>LetsMeet</h1>
@@ -36,23 +44,13 @@
                             {% if i+(t*7)+1 > calendar.monthrange(today.year, today.month)[0] %}
                                 {{ i+(t*7)+1-calendar.monthrange(today.year, today.month)[0] }}
                                 <ul>
-
-                                    <!-- <table> -->
-                                        {% for index, event in enumerate(eventDates, start=0) %}
-                                            {% if date(today.year, today.month, i+(t*7)+1-calendar.monthrange(today.year, today.month)[0]) == date.fromisoformat(event) %}
-                                        <!-- <tr>
-                                            <td> -->
-                                                <li>
-                                                    <a href="{{ url_for('get_event', event_id=events[index].id) }}">{{ events[index].title }}</a>
-                                                </li>
-                                            <!-- </td>
-                                            <td> -->
-                                                <!-- {{ events[index].text }} -->
-                                            <!-- </td>
-                                        </tr> -->
-                                            {% endif %}
-                                        {% endfor %}
-                                    <!-- </table> -->
+                                    {% for index, event in enumerate(eventDates, start=0) %}
+                                        {% if date(today.year, today.month, i+(t*7)+1-calendar.monthrange(today.year, today.month)[0]) == date.fromisoformat(event) %}
+                                            <li>
+                                                <a href="{{ url_for('get_event', event_id=events[index].id) }}">{{ events[index].title }}</a>
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
                                 </ul>
                             {% endif %}
                         </td>
@@ -70,4 +68,4 @@
             Group 3: Algos Anonymous project
         </p>
     </footer>
-    {% endblock %}
+    </html>
