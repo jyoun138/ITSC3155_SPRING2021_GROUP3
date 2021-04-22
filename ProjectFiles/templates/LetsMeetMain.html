@@ -38,7 +38,7 @@
 
                                     <!-- <table> -->
                                         {% for index, event in enumerate(eventDates, start=0) %}
-                                        {% if date(today.year, today.month, i+(t*7)+1-calendar.monthrange(today.year, today.month)[0]) == date.fromisoformat(event) %}
+                                            {% if date(today.year, today.month, i+(t*7)+1-calendar.monthrange(today.year, today.month)[0]) == date.fromisoformat(event) %}
                                         <!-- <tr>
                                             <td> -->
                                                 <li>
@@ -49,7 +49,7 @@
                                                 <!-- {{ events[index].text }} -->
                                             <!-- </td>
                                         </tr> -->
-                                        {% endif %}
+                                            {% endif %}
                                         {% endfor %}
                                     <!-- </table> -->
                                 </ul>
