@@ -4,7 +4,7 @@ from flask import render_template
 from flask import request
 from flask import redirect, url_for, session
 from database import db
-from models import Event as Event, User as User
+from models import Event as Event, User as User, RSVP as RSVP
 from datetime import datetime, date
 import calendar
 import math as math
@@ -75,7 +75,7 @@ def index():
 @app.route('/events')
 def get_events():
     if session.get('user'):
-        my_events = db.session.query(Event).all()
+        my_events = db.session.query(Event).filter_by(user_id=session['user_id']).all()
         return render_template('LetsMeetEvents.html', events=my_events, user=session['user'])
     return redirect(url_for('login'))
 
@@ -83,8 +83,19 @@ def get_events():
 def get_event(event_id):
     if session.get('user'):
         my_event = db.session.query(Event).filter_by(id=event_id).one()
-        return render_template('LetsMeetEvent.html', event=my_event, user=session['user'])
+        return render_template('LetsMeetEvent.html', event=my_event, user=session['user'], user_id=session['user_id'])
     return redirect(url_for('login'))
+
+# Trying to figure out how to add RSVP'd Event id's to Users database (see models.py/Users)
+@app.route('/events/rsvp/<event_id>', methods=['GET', 'POST'])
+def RSVP_event(event_id):
+    if session.get('user'):
+        new_RSVP = RSVP(session['user_id'], event_id)
+        db.session.add(new_RSVP)
+        db.session.commit()
+        return redirect(url_for('get_events'))
+    else:
+        return redirect(url_for('login'))
 
 @app.route('/events/new', methods=['GET', 'POST'])
 def new_event():
@@ -107,16 +118,18 @@ def edit_event(event_id):
     if session.get('user'):
         eventForm = EventForm()
         if request.method == 'POST' and eventForm.validate_on_submit():
-            title = request.form['title']
-            text = request.form['eventText']
-            eventDate = request.form['eventDate']
-            new_record = Event(title=title, text=text, date=eventDate, id=session['user_id'])
-            db.session.add(new_record)
+            my_event = db.session.query(Event).filter_by(id=event_id).one()
+            my_event.title = request.form['title']
+            my_event.text = request.form['eventText']
+            my_event.eventDate = request.form['eventDate']
+            db.session.add(my_event)
             db.session.commit()
             return redirect(url_for('get_events'))
         else:
             my_event = db.session.query(Event).filter_by(id=event_id).one()
-            eventForm.title.default = my_event.title
+            eventForm.title.data = my_event.title
+            eventForm.eventText.data = my_event.text
+            eventForm.eventDate.data = my_event.date
             return render_template('LetsMeetNew.html', event=my_event, user=session['user'], form=eventForm,
                                    today=date.today())
     else:

@@ -1,24 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="LetsMeet">
-        <title>LetsMeet</title>
-        <!-- styles -->
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles/LetsMeetStylesheet.css') }}">
-    </head>
+{% extends "base.html" %}
+    {% block content %}
     <body>
-       <nav>
-        <a href="{{ url_for('index') }}">Home</a> ||
-        <a href="{{ url_for('get_events') }}">My Events</a> ||
-        <a href="{{ url_for('new_event') }}">Add Event</a> ||
-        <a href="{{ url_for('logout') }}">Logout</a>
-       </nav>
+        <header>
+            <h1>LetsMeet</h1>
+            <!-- top menu navigation section -->
+            <nav id="topNav">
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('get_events') }}"> My Events</a></li>
+                    <li id="currPage"><a href="{{ url_for('new_event') }}">Add Event</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
 
-        <h1>Welcome {{user}} to the LetsMeet Site!</h1>
-        
-        <form action="new" method="post">
+        <h2>Welcome {{user}} to the LetsMeet Site!</h2>
+        <div>
+            <p>Please enter the title and description for your new event and 
+                select a date. When you are done, click the submit button to 
+                enter your new event in the calendar.
+            </p>
+
+            <form action="{% if event %}{{ event.id }}{% else %}new{% endif %}" method="POST">
+                <!-- first label and input -->
+                <span id="newEventLabel">
+                    {{ form.title.label }}
+                </span>
+                <span id="newEventInput">
+                    {{ form.title }}
+                </span>
+                <br>
+                {% if form.title.errors %}
+                    <span id="errors">
+                        {% for error in form.title.errors %}
+                            {{ error }}
+                            <br>
+                        {% endfor %}
+                    </span>
+                {% endif %}
+                <br>
+                <!-- second label and input -->
+                <span id="newEventLabel">
+                    {{ form.eventText.label }}
+                </span>
+                <span id="newEventInput">
+                    {{ form.eventText }}
+                </span>
+                <br>
+                {% if form.eventText.errors %}
+                    <span id="errors">
+                        {% for error in form.eventText.errors %}
+                            {{ error }}
+                            <br>
+                        {% endfor %}
+                    </span>
+                {% endif %}
+                <br>
+                <!-- section for selecting the date -->
+                <span id="dateLabel"> {{ form.eventDate.label }} </span>
+                <input type="date" id="eventDate" name="eventDate"
+                    value="{{ form.eventDate.data }}"
+                    min="{{ today.isoformat() }}">
+                {% if form.eventDate.errors %}
+                    <span id="errors">
+                        {% for error in form.eventDate.errors %}
+                        {{ error }}
+                        <br>
+                        {% endfor %}
+                    </span>
+                {% endif %}
+                <br>
+                <br>
+                {{ form.submit }}
+            </form>
+        </div>
+
+        <!-- <form action="{% if event %}{{ event.id }}{% else %}new{% endif %}" method="post">
             <div class="form-field">{{ form.title.label }} {{ form.title }}
                 {% if form.title.errors %}
                 <ul class="errors">
@@ -39,7 +96,7 @@
             </div>
             <div class="form-field">{{ form.eventDate.label }} 
                 <input type="date" id="eventDate" name="eventDate"
-                    value="{{ today.isoformat() }}"
+                    value="{{ form.eventDate.data }}"
                     min="{{ today.isoformat() }}">
                 {% if form.eventDate.errors %}
                 <ul class="errors">
@@ -51,6 +108,11 @@
             </div>
             {{ form.submit }}
 
-        </form>
+        </form> -->
     </body>
-</html>
+    <footer>
+        <p>
+            Group 3: Algos Anonymous project
+        </p>
+    </footer>
+    {% endblock %}

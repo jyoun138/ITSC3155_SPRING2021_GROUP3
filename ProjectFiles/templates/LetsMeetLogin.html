@@ -1,25 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="LetsMeet">
-        <title>LetsMeet</title>
-        <!-- styles -->
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles/LetsMeetStylesheet.css') }}">
-    </head>
+{% extends "base.html" %}
+    {% block content %}
     <body>
-        <nav>
-            <a href="{{ url_for('register') }}">Register</a>
-        </nav>
+        <header>
+            <h1>LetsMeet</h1>
+            <!-- top menu navigation section -->
+            <nav id="topNav">
+                <ul>
+                    <li id="currPage"><a href="{{ url_for('register') }}">Register</a></li>
+                </ul>
+            </nav>
+        </header>
 
-        <h1>Welcome to the LetsMeet Site!</h1>
+        <h2>Welcome to the LetsMeet Site!</h2>
 
-        <h1>Login</h1>
+        <h3>Login</h3>
 
         <form action="/login" method="POST">
-            
-            <div class="form-field">{{ form.username.label }} {{ form.username }}
+            <span id="theLabel">
+                {{ form.username.label }}
+            </span>
+            <span id="inputForm">
+                {{ form.username }}
+            </span>
+            <br>
+            {% if form.username.errors %}
+                <span id="errors">
+                    {% for error in form.username.errors %}
+                        {{ error }}
+                        <br>
+                    {% endfor %}
+                </span>
+            {% endif %}
+
+            <br>
+
+            <span id="theLabel">
+                {{ form.password.label }}
+            </span>
+            <span id="inputForm">
+                {{ form.password }}
+            </span>
+            <br>
+            {% if form.username.errors %}
+                <span id="errors">
+                    {% for error in form.username.errors %}
+                        {{ error }}
+                        <br>
+                    {% endfor %}
+                </span>
+            {% endif %}
+
+            <br>
+
+            <!-- <div class="form-field">{{ form.username.label }} {{ form.username }}
                 {% if form.username.errors %}
                 <ul class="errors">
                     {% for error in form.username.errors %}
@@ -27,9 +60,9 @@
                     {% endfor %}
                 </ul>
                 {% endif %}
-            </div>
+            </div> -->
 
-            <div class="form-field">{{ form.password.label }} {{ form.password }}
+            <!-- <div class="form-field">{{ form.password.label }} {{ form.password }}
                 {% if form.password.errors %}
                 <ul class="errors">
                     {% for error in form.password.errors %}
@@ -37,10 +70,15 @@
                     {% endfor %}
                 </ul>
                 {% endif %}
-            </div>
+            </div> -->
 
             {{ form.submit }}
         </form>
 
     </body>
-</html>
+    <footer>
+        <p>
+            Group 3: Algos Anonymous project
+        </p>
+    </footer>
+    {% endblock %}
