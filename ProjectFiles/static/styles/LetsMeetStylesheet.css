@@ -175,6 +175,7 @@ td {
     text-align: center;
     font-family: "Monaco", monospace;
     font-size: 20px;
+    text-decoration: none;
 }
 
 th{
@@ -193,9 +194,11 @@ nav {
 
 a{
     text-decoration: none;
-    border-top: 3px solid white;
-    border-bottom: 3px solid white;
     padding: 12px;
     color: white;
     font-family: "sans", monospace;       
+}
+
+#eventName {
+    text-align: left;    
 }
