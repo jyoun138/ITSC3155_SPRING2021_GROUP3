@@ -3,14 +3,13 @@
     <body>
         <header>
             <h1>LetsMeet</h1>
-            <!-- <br> -->
             <nav id="topNav">
                 <ul>
                     <li id="currPage"><a href="{{ url_for('index') }}"> Home</a></li>
                     <li><a href="{{ url_for('get_events') }}"> My Events</a></li>
                     <li><a href="{{ url_for('new_event') }}">Add Event</a></li>
                     <li><a href="{{ url_for('logout') }}">Logout</a></li>
-                    <li><a href="{{ url_for('calendarpage') }}">Calendar</a></li>
+                    <!-- <li><a href="{{ url_for('calendarpage') }}">Calendar</a></li> -->
                 </ul>
             </nav>
         </header>
@@ -18,7 +17,7 @@
         <h2>Welcome {{user}} to the LetsMeet Site!</h2>
 
         <table>
-            <caption>Calender</caption>
+            <caption>Calendar</caption>
             <tr>
                 <th>Monday</th>
                 <th>Tuesday</th>
@@ -37,22 +36,14 @@
                                 {{ i+(t*7)+1-calendar.monthrange(today.year, today.month)[0] }}
                                 <ul>
 
-                                    <!-- <table> -->
                                         {% for index, event in enumerate(eventDates, start=0) %}
                                         {% if date(today.year, today.month, i+(t*7)+1-calendar.monthrange(today.year, today.month)[0]) == date.fromisoformat(event) %}
-                                        <!-- <tr>
-                                            <td> -->
+                                        
                                                 <li>
                                                     <a href="{{ url_for('get_event', event_id=events[index].id) }}">{{ events[index].title }}</a>
-                                                </li>
-                                            <!-- </td>
-                                            <td> -->
-                                                <!-- {{ events[index].text }} -->
-                                            <!-- </td>
-                                        </tr> -->
+                                                </li>                                                                                      
                                         {% endif %}
                                         {% endfor %}
-                                    <!-- </table> -->
                                 </ul>
                             {% endif %}
                         </td>
