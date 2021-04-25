@@ -24,9 +24,12 @@ class User(db.Model):
     username = db.Column("username", db.String(100))
     password = db.Column("password", db.String(30))
     events = db.relationship("Event", backref="user", lazy=True)
+<<<<<<< HEAD
     # Trying to figure out a way to save all Event id values into a string that will
     # be recognized by the database
     # RSVP_events =
+=======
+>>>>>>> 4b5828cad85b99db86895cfcd3b237bfaa09afd7
 
     def __init__(self, name, pwd):
         self.username = name
@@ -35,6 +38,7 @@ class User(db.Model):
     def __repr__(self):
         return f"User('{self.id}', '{self.username}, '{self.password}')"
 
+<<<<<<< HEAD
 # an attempt to create friends list
 class Friends(db.Model):
     id = db.Column("id", db.Integer, primary_key=True)
@@ -49,3 +53,17 @@ class Friends(db.Model):
 
     def __repr__(self):
         return f"User('{self.id}', '{self.user_id}', '{self.user_id_2}', '{self.friend_username}')"
+=======
+
+class RSVP(db.Model):
+    RSVP_id = db.Column("RSVP_id", db.Integer, primary_key=True)
+    user_id = db.Column("user_id", db.Integer, db.ForeignKey('user.id'))
+    event_id = db.Column("event_id", db.Integer, db.ForeignKey('event.id'))
+
+    def __init__(self, user_id, event_id):
+        self.user_id = user_id
+        self.event_id = event_id
+
+    def __repr__(self):
+        return f"RSVP('{self.user_id}', '{self.event_id}')"
+>>>>>>> 4b5828cad85b99db86895cfcd3b237bfaa09afd7

@@ -4,7 +4,7 @@ from flask import render_template
 from flask import request
 from flask import redirect, url_for, session
 from database import db
-from models import Event as Event, User as User
+from models import Event as Event, User as User, RSVP as RSVP
 from datetime import datetime, date
 import calendar
 import math as math
@@ -87,15 +87,15 @@ def get_event(event_id):
     return redirect(url_for('login'))
 
 # Trying to figure out how to add RSVP'd Event id's to Users database (see models.py/Users)
-# @app.route('/events/RSVP/<event_id>')
-# def RSVP_event(event_id):
-#     if session.get('user'):
-#         user = db.session.query(User).filter_by(id=session['user_id']).one()
-#         my_event = db.session.query(Event).filter_by(id=event_id).one()
-#         user.RSVP_events.append(my_event.id)
-#         return redirect(url_for('get_events'))
-#     else:
-#         return redirect(url_for('login'))
+@app.route('/events/rsvp/<event_id>', methods=['GET', 'POST'])
+def RSVP_event(event_id):
+    if session.get('user'):
+        new_RSVP = RSVP(session['user_id'], event_id)
+        db.session.add(new_RSVP)
+        db.session.commit()
+        return redirect(url_for('get_events'))
+    else:
+        return redirect(url_for('login'))
 
 @app.route('/events/new', methods=['GET', 'POST'])
 def new_event():
@@ -148,6 +148,18 @@ def logout():
         session.clear()
     return redirect(url_for('login'))
 
+@app.route('/calendar')
+def calendarpage():
+    if session.get('user'):
+        my_events = db.session.query(Event).all()
+        eventDays = []
+        for i in my_events:
+            eventDays.append(i.date)
+        # Returns a template with many python arguments to make the calendar work on the Home page
+        return render_template('LetsMeetCalendar.html', today=date.today(), math=math, calendar=calendar,
+                               user=session['user'], date=date, eventDates=eventDays, events=my_events, sum=sum,
+                               enumerate=enumerate)
+    return redirect(url_for('login'))
 
 app.run(host=os.getenv('IP', '127.0.0.1'), port=int(os.getenv('PORT', 5000)), debug=True)
 

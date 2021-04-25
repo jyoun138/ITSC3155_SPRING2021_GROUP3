@@ -1,16 +1,30 @@
-{% extends "base.html" %}
-    {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="LetsMeet">
+        <title>LetsMeet</title>
+        <!-- styles -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/LetsMeetStylesheet.css') }}">
+    </head>
     <body>
-        <nav>
-            <a href="{{ url_for('index') }}"> Home</a> ||
-            <a href="{{ url_for('get_events') }}"> My Events</a> ||
-            <a href="{{ url_for('new_event') }}">Add Event</a> ||
-            <a href="{{ url_for('logout') }}">Logout</a>
-        </nav>
+        <header>
+            <h1>LetsMeet</h1>
+            <!-- top menu navigation section -->
+            <nav id="topNav">
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li id="currPage"><a href="{{ url_for('get_events') }}"> My Events</a></li>
+                    <li><a href="{{ url_for('new_event') }}">Add Event</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
 
-        <h1>Welcome {{user}} to the LetsMeet Site!</h1>
+        <h2>Welcome {{user}} to the LetsMeet Site!</h2>
 
-        <h1>Listing events</h1>
+        <h3>Listing events</h3>
 
         <table>
             <tr>
@@ -25,4 +39,9 @@
             {% endfor %}
         </table>
     </body>
-    {% endblock %}
+    <footer>
+        <p>
+            Group 3: Algos Anonymous project
+        </p>
+    </footer>
+    </html>

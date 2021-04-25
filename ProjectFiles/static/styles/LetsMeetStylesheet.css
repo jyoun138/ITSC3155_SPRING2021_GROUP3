@@ -1,25 +1,204 @@
+html {
+    min-height: 100%;
+    background-size: cover;
+    background: linear-gradient(to bottom, rgb(250, 228, 218), rgb(220, 178, 255));
+}
+
+
 body {
-    padding: 30px 30px;
-    }
-h1{
-    color:rgb(60, 71, 228);
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    margin: 0 auto;
+    max-width: 850px;
 }
-h2{
-    color:rgb(228, 47, 47);
-    background:rgb(60, 71, 228);
+
+header {
+    background-image: 
+		linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), 
+		url(./indexPic.png);
+	height: 350px;
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	padding-top: 80px;        
 }
+
+#topNav {
+    text-decoration: none;
+    position: relative;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 817px;
+}
+
+#topNav li {
+    text-decoration: none;
+    text-align: right;
+    display: inline-block;
+    padding: 0 15px 0 15px;
+    font-size: 150%;
+    margin-top: -15%;
+}
+
+#topNav a {
+    text-decoration: none;
+    color: antiquewhite;
+    
+}
+
 table {
-    width: 100%;
+    color: antiquewhite;
 }
-th {
-    height: 10px;
+
+
+/* Formatting for the website's name displayed in the header portion */
+h1 {
+    display: inline-block;
+    font-family: LemonBrush;
+    color: rgb(22, 22, 22);
+    font-size: 650%;
+    padding: -25px 0 -25px 0;
+    margin-top: 0%;
 }
+
+/* Formatting action when the mouse hovers over the top navigation menu items */
+#topNav a:hover {
+    color: rgb(247, 78, 0);
+}
+
+/* formatting for the currently selected page */
+#currPage {
+    color: violet;
+    border: 1px solid whitesmoke;
+    background: url(./redFeather.png) no-repeat left center;
+}
+
+h2, h3 {
+    font-size: 26px;
+    background-color: #38ff8e;
+    text-align: center;
+    color: #362935;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+/* Format for the user input */
+form {
+    background-color: #f8f8f8;
+	border: solid 2px;
+	border-radius: 10px;
+	padding: 20px;
+	max-width: 100%;
+    background-color: rgb(237, 237, 237);
+}
+
+/* formatting for the labels for the form input boxes */
+#theLabel {
+	float: left;
+	width: 2em;
+	text-align: right;
+    width: 20%;
+}
+
+#inputForm {
+	margin-left: 2em;
+	margin-bottom: .5em;
+	padding: .25em;
+	font-size: 1em;
+	/* border: 1px solid #999; */
+	/* background-color: whitesmoke; */
+	/* border-radius: 5px; */
+}
+
+#newEventLabel, #dateLabel {
+    float: left;
+    width: 7em;
+    text-align: right;
+}
+
+#newEventInput, #eventDate {
+    margin-left: 40px;
+    margin-bottom: .5em;
+	padding: .25em;
+	font-size: 1em;
+}
+
+#errors {
+    color: red;
+}
+
+/* footer formatting */
+footer {
+    background-color: #232422;
+    text-align: center;
+    font-size: 150%;
+    color: white;    
+}
+
+/*  
+    Custom font retrieved from 1001freefonts.com under permission of 
+    terms of service listed therein. 
+    https://www.1001freefonts.com/lemon-brush.font
+*/
+@font-face {
+    font-family: LemonBrush;
+    src: url(./LemonBrushFont.otf);
+}
+
+
+    
 table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-    background-color:rgb(95, 95, 192);
+    border-radius: 10px;    
+    #border-collapse: collapse;
+    text-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    }
+
+table {
+    border-collapse:separate;
 }
+caption {
+    color: #362935;
+    background-color: ;
+    font-size: 30px;
+    border: 5px solid #83f29f;    
+    border-radius: 10px;
+}   
+
 td {
     padding: 10px;
     height: 10ex;
+    background-color: #83f29f;
+    color: #362935;
+    text-align: center;
+    font-family: "Monaco", monospace;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+th{
+    color: #362935;
+    font-size: 22px;    
+}
+
+nav {
+  display: block;
+  color: #232422;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  background-color: #232422;    
+}
+
+a{
+    text-decoration: none;
+    padding: 12px;
+    color: white;
+    font-family: "sans", monospace;       
+}
+
+#eventName {
+    text-align: left;    
 }
