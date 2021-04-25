@@ -41,9 +41,9 @@ class Friends(db.Model):
     user_id_2 = db.Column("user_id_2", db.Integer, db.ForeignKey('user.id_2'))
     friendUsername = db.Column("username", db.String(100))
 
-    def __init__(self, id, id_2, friendUsername):
-        self.userID = id
-        self.userID_2 = id_2
+    def __init__(self, user_id, user_id_2, friendUsername):
+        self.user_id = user_id
+        self.user_id_2 = user_id_2
         self.friendUsername = friendUsername
 
     def __repr__(self):
