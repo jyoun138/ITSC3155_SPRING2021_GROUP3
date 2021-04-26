@@ -1,0 +1,21 @@
+1. Next week, our goal is to begin to create the additional features that we created for our project
+in the beginning of our project and apply CSS to those features, so it is consistent with the rest
+of the application we are creating. We will most likely meet on Thursday to discuss Sprint 6. We will
+have to discuss which of the additional features that we want to implement for the Sprint 6 milestone
+since we want to implement features that will be purposeful for our application. We will also discuss
+who will be the next members to create weekly agenda and weekly status report.
+
+2. This week I had to begin creating the friend’s list system for our project. I was not able to
+complete it yet since it is a bit of a challenge to do but should be able to complete it by the weekend.
+I did learn how to modify the models.py and add a class called friends that will create a friends table
+in the database. My group members informed me that there are a few things I need to change about the friend
+’s class in the model.py like having two user ids since a user will add a person to their friend’s list
+and it will also add their user id to the user they added friend’s list It’s a little confusing
+but it will make more sense when the feature works.
+
+3. Next week, our goal is to finish the additional features that we started working on. We will most likely
+meet on Thursday to discuss the progress for our features so far. We will have to update the user stories, DFD,
+relationship diagram, and the ethical concerns for our project. We will also discuss who will be the next
+members to create weekly agenda and weekly status report.
+
+

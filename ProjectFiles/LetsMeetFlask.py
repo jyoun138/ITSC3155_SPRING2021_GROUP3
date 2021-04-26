@@ -4,7 +4,7 @@ from flask import render_template
 from flask import request
 from flask import redirect, url_for, session
 from database import db
-from models import Event as Event, User as User, RSVP as RSVP
+from models import Event as Event, User as User, RSVP as RSVP, Friends as Friends
 from datetime import datetime, date
 import calendar
 import math as math
@@ -161,7 +161,18 @@ def calendarpage():
                                enumerate=enumerate)
     return redirect(url_for('login'))
 
+@app.route('/friends')
+def friendspage():
+    if session.get('user'):
+        # retrieve notes from database
+        list_users = db.session.query(Friends).filter_by(user_id=session['user_id']).all()
+
+        return render_template('LetsMeetFriends.html', users=list_users, user=session['user'])
+    else:
+        return redirect(url_for('login'))
+
 app.run(host=os.getenv('IP', '127.0.0.1'), port=int(os.getenv('PORT', 5000)), debug=True)
+
 
 # To see the web page in your web browser, go to the url,
 #   http://127.0.0.1:5000
