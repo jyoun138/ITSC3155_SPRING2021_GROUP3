@@ -1,0 +1,6 @@
+* Last week Me and my team worked on getting all of the base features for the project coded and working.
+* This week we added multiple features and cleaning up the html and css for the project. The features we
+added include I much better RSVP system. Included the ability to change the month on the calendar and heavily
+improved on the HTML and CSS
+* Next week we plan on pushing as many of the new features as possible. My personal goal is to get a completely
+working friending system up and running.
