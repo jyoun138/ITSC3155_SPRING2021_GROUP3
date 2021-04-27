@@ -96,13 +96,13 @@ form {
 /* formatting for the labels for the form input boxes */
 #theLabel {
 	float: left;
-	width: 2em;
+	width: 5em;
 	text-align: right;
-    width: 20%;
+    /*width: 5%;*/
 }
 
 #inputForm {
-	margin-left: 2em;
+	margin-left: 4em;
 	margin-bottom: .5em;
 	padding: .25em;
 	font-size: 1em;
@@ -115,10 +115,18 @@ form {
     float: left;
     width: 7em;
     text-align: right;
+<<<<<<< HEAD
+    /* width: 5%; */
+}
+
+#newEventInput, #eventDate {
+    margin-left: 4em;
+=======
 }
 
 #newEventInput, #eventDate {
     margin-left: 40px;
+>>>>>>> 4e3e153d4df57dcec0947648d53e09e7777adc11
     margin-bottom: .5em;
 	padding: .25em;
 	font-size: 1em;
@@ -137,9 +145,15 @@ footer {
 }
 
 /*  
+<<<<<<< HEAD
+    Custom font retrieved from 1001freefonts.com under permission of
+    terms of service listed therein. 
+    https://www.1001freefonts.com/lemonbrush-font.html
+=======
     Custom font retrieved from 1001freefonts.com under permission of 
     terms of service listed therein. 
     https://www.1001freefonts.com/lemon-brush.font
+>>>>>>> 4e3e153d4df57dcec0947648d53e09e7777adc11
 */
 @font-face {
     font-family: LemonBrush;

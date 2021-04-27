@@ -47,6 +47,20 @@
                     </span>
                 {% endif %}
                 <br>
+                <!-- section for selecting the date -->
+                <span id="dateLabel"> {{ form.eventDate.label }} </span>
+                <input type="date" id="eventDate" name="eventDate"
+                    value="{{ form.eventDate.data }}"
+                    min="{{ today.isoformat() }}">
+                {% if form.eventDate.errors %}
+                    <span id="errors">
+                        {% for error in form.eventDate.errors %}
+                        {{ error }}
+                        <br>
+                        {% endfor %}
+                    </span>
+                {% endif %}
+                <br>
                 <!-- second label and input -->
                 <span id="newEventLabel">
                     {{ form.eventText.label }}
@@ -64,25 +78,14 @@
                     </span>
                 {% endif %}
                 <br>
-                <!-- section for selecting the date -->
-                <span id="dateLabel"> {{ form.eventDate.label }} </span>
-                <input type="date" id="eventDate" name="eventDate"
-                    value="{{ form.eventDate.data }}"
-                    min="{{ today.isoformat() }}">
-                {% if form.eventDate.errors %}
-                    <span id="errors">
-                        {% for error in form.eventDate.errors %}
-                        {{ error }}
-                        <br>
-                        {% endfor %}
-                    </span>
-                {% endif %}
-                <br>
                 <br>
                 {{ form.submit }}
             </form>
         </div>
+<<<<<<< HEAD
+=======
         
+>>>>>>> 4e3e153d4df57dcec0947648d53e09e7777adc11
     </body>
     <footer>
         <p>
