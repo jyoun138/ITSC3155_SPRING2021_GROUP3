@@ -1,5 +1,13 @@
-{% extends "base.html" %}
-    {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="LetsMeet">
+        <title>LetsMeet</title>
+        <!-- styles -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/LetsMeetStylesheet.css') }}">
+    </head>
     <body>
         <header>
             <h1>LetsMeet</h1>
@@ -36,4 +44,4 @@
             Group 3: Algos Anonymous project
         </p>
     </footer>
-    {% endblock %}
+    </html>

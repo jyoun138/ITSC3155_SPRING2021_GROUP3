@@ -24,7 +24,10 @@ class User(db.Model):
     username = db.Column("username", db.String(100))
     password = db.Column("password", db.String(30))
     events = db.relationship("Event", backref="user", lazy=True)
-
+    friends = db.relationship("Friends", backref="user", lazy=True)
+    # Trying to figure out a way to save all Event id values into a string that will
+    # be recognized by the database
+    # RSVP_events =
     def __init__(self, name, pwd):
         self.username = name
         self.password = pwd
@@ -32,6 +35,20 @@ class User(db.Model):
     def __repr__(self):
         return f"User('{self.id}', '{self.username}, '{self.password}')"
 
+# an attempt to create friends list
+class Friends(db.Model):
+    id = db.Column("id", db.Integer, primary_key=True)
+    user_id = db.Column("user_id", db.Integer, db.ForeignKey('user.id'))
+    user_id_2 = db.Column("user_id_2", db.Integer,)
+    friendUsername = db.Column("username", db.String(100))
+
+    def __init__(self, user_id, user_id_2, friendUsername):
+        self.user_id = user_id
+        self.user_id_2 = user_id_2
+        self.friendUsername = friendUsername
+
+    def __repr__(self):
+        return f"User('{self.id}', '{self.user_id}', '{self.user_id_2}', '{self.friend_username}')"
 
 class RSVP(db.Model):
     RSVP_id = db.Column("RSVP_id", db.Integer, primary_key=True)

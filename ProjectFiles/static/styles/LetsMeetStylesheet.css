@@ -14,18 +14,21 @@ body {
 
 header {
     background-image: 
-        linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), 
-        url(./indexPic.png);
-        height: 350px;
-        background-size: cover;
-        background-position: center;
-        position: relative;
+		linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), 
+		url(./indexPic.png);
+	height: 350px;
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	padding-top: 80px;        
 }
 
 #topNav {
     text-decoration: none;
     position: relative;
-    display: inline-block;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 817px;
 }
 
 #topNav li {
@@ -40,6 +43,7 @@ header {
 #topNav a {
     text-decoration: none;
     color: antiquewhite;
+    
 }
 
 table {
@@ -70,13 +74,19 @@ h1 {
 }
 
 h2, h3 {
-    font-size: larger;
+    font-size: 26px;
+    background-color: #38ff8e;
+    text-align: center;
+    color: #362935;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
+
 
 /* Format for the user input */
 form {
     background-color: #f8f8f8;
-	border: solid 2px #787878;
+	border: solid 2px;
 	border-radius: 10px;
 	padding: 20px;
 	max-width: 100%;
@@ -105,11 +115,18 @@ form {
     float: left;
     width: 7em;
     text-align: right;
+<<<<<<< HEAD
     /* width: 5%; */
 }
 
 #newEventInput, #eventDate {
     margin-left: 4em;
+=======
+}
+
+#newEventInput, #eventDate {
+    margin-left: 40px;
+>>>>>>> 4e3e153d4df57dcec0947648d53e09e7777adc11
     margin-bottom: .5em;
 	padding: .25em;
 	font-size: 1em;
@@ -121,30 +138,81 @@ form {
 
 /* footer formatting */
 footer {
-    background-color: beige;
+    background-color: #232422;
+    text-align: center;
+    font-size: 150%;
+    color: white;    
 }
 
 /*  
+<<<<<<< HEAD
     Custom font retrieved from 1001freefonts.com under permission of
     terms of service listed therein. 
     https://www.1001freefonts.com/lemonbrush-font.html
+=======
+    Custom font retrieved from 1001freefonts.com under permission of 
+    terms of service listed therein. 
+    https://www.1001freefonts.com/lemon-brush.font
+>>>>>>> 4e3e153d4df57dcec0947648d53e09e7777adc11
 */
 @font-face {
     font-family: LemonBrush;
     src: url(./LemonBrushFont.otf);
 }
-table {
-    width: 100%;
-}
-th {
-    height: 10px;
-}
+
+
+    
 table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-    background-color:rgb(95, 95, 192);
+    border-radius: 10px;    
+    #border-collapse: collapse;
+    text-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    }
+
+table {
+    border-collapse:separate;
 }
+caption {
+    color: #362935;
+    background-color: ;
+    font-size: 30px;
+    border: 5px solid #83f29f;    
+    border-radius: 10px;
+}   
+
 td {
     padding: 10px;
     height: 10ex;
+    background-color: #83f29f;
+    color: #362935;
+    text-align: center;
+    font-family: "Monaco", monospace;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+th{
+    color: #362935;
+    font-size: 22px;    
+}
+
+nav {
+  display: block;
+  color: #232422;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  background-color: #232422;    
+}
+
+a{
+    text-decoration: none;
+    padding: 12px;
+    color: white;
+    font-family: "sans", monospace;       
+}
+
+#eventName {
+    text-align: left;    
 }

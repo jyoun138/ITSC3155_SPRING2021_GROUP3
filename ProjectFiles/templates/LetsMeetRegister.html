@@ -1,5 +1,13 @@
-{% extends "base.html" %}
-    {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="LetsMeet">
+        <title>LetsMeet</title>
+        <!-- styles -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/LetsMeetStylesheet.css') }}">
+    </head>
     <body>
         <header>
             <h1>LetsMeet</h1>
@@ -10,7 +18,12 @@
                 </ul>
             </nav>
         </header>
+<<<<<<< HEAD
     <body>
+=======
+    <body>        
+
+>>>>>>> 4e3e153d4df57dcec0947648d53e09e7777adc11
         <h2>Welcome {{user}} to the LetsMeet Site!</h2>
         <form method="POST" action="/register">
             <span id="theLabel">{{ form.username.label }}</span>
@@ -66,8 +79,12 @@
                 {% endfor %}
             </span>
             {% endif %}
+<<<<<<< HEAD
             <br>
             <br>
+=======
+        
+>>>>>>> 4e3e153d4df57dcec0947648d53e09e7777adc11
             {{ form.submit }}
         </form>
 
@@ -77,4 +94,4 @@
             Group 3: Algos Anonymous project
         </p>
     </footer>
-    {% endblock %}
+    </html>
