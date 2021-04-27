@@ -39,7 +39,7 @@ class User(db.Model):
 class Friends(db.Model):
     id = db.Column("id", db.Integer, primary_key=True)
     user_id = db.Column("user_id", db.Integer, db.ForeignKey('user.id'))
-    user_id_2 = db.Column("user_id_2", db.Integer, db.ForeingKey('user.id'))
+    user_id_2 = db.Column("user_id_2", db.Integer, db.ForeignKey('user.id'))
     friendUsername = db.Column("username", db.String(100), db.ForeignKey('user.username'))
 
     def __init__(self, user_id, user_id_2, friendUsername):
