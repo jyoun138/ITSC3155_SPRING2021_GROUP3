@@ -165,12 +165,12 @@ def calendarpage():
                                enumerate=enumerate)
     return redirect(url_for('login'))
 
+# route for friends list
 @app.route('/friends')
 def friendspage():
     if session.get('user'):
-        # retrieve notes from database
-        list_users = db.session.query(Friends).filter_by(user_id=session['user_id']).all()
-
+        # retrieve users from database
+        list_users = db.session.query(User).filter_by(user_id=session['user_id']).all()
         return render_template('LetsMeetFriends.html', users=list_users, user=session['user'])
     else:
         return redirect(url_for('login'))
