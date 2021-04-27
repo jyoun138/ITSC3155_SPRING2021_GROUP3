@@ -125,7 +125,7 @@ def edit_event(event_id):
             my_event = db.session.query(Event).filter_by(id=event_id).one()
             my_event.title = request.form['title']
             my_event.text = request.form['eventText']
-            my_event.eventDate = request.form['eventDate']
+            my_event.date = request.form['eventDate']
             db.session.add(my_event)
             db.session.commit()
             return redirect(url_for('get_events'))
