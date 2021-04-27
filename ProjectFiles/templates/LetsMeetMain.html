@@ -67,9 +67,9 @@
                                 <ul>
                                     {% for index, event in enumerate(eventDates, start=0) %}
                                         {% if date(today.year, month, i+(t*7)+1-calendar.monthrange(today.year, month)[0]) == date.fromisoformat(event) %}
-                                            
+                                            <li>
                                                 <a id="eventName" href="{{ url_for('get_event', event_id=events[index].id) }}">{{ events[index].title }}</a>
-                                            <br>
+                                            </li>
                                         {% endif %}
                                     {% endfor %}
                                 </ul>
