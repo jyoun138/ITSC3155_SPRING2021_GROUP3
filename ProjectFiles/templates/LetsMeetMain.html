@@ -24,27 +24,27 @@
 
         <h2>Welcome {{user}} to the LetsMeet Site!</h2>
 
-        <!-- <form action="index" method="POST">
-            <select name="calendar__month">
+        <form action="index" method="POST">
+            <select name="calendar_month">
                 <option selected>Choose Month</option>
-                <option>Jan</option>
-                <option>Feb</option>
-                <option>Mar</option>
-                <option>Apr</option>
-                <option>May</option>
-                <option>Jun</option>
-                <option>Jul</option>
-                <option>Aug</option>
-                <option>Sep</option>
-                <option>Oct</option>
-                <option>Nov</option>
-                <option>Dec</option>
+                <option value=1>Jan</option>
+                <option value=2>Feb</option>
+                <option value=3>Mar</option>
+                <option value=4>Apr</option>
+                <option value=5>May</option>
+                <option value=6>Jun</option>
+                <option value=7>Jul</option>
+                <option value=8>Aug</option>
+                <option value=9>Sep</option>
+                <option value=10>Oct</option>
+                <option value=11>Nov</option>
+                <option value=12>Dec</option>
             </select>
             <input type="submit" value="Submit">
-        </form> -->
+        </form>
 
         <table>
-            <caption>Calendar</caption>
+            <caption>{{ calendar.month_name[month] }}</caption>
             <tr>
                 <th>Monday</th>
                 <th>Tuesday</th>
@@ -57,27 +57,27 @@
             <!-- i+(t*7)+1 is the eqation to find the physical calendar (td) number
             Example: the top right most square has i=0 and t=0 thus 0+(0*7)+1=1 
             and the block next to it has i=1 and t=0 thus 1+(0*7)+1=2 -->
-            {% for t in range(math.ceil((sum(calendar.monthrange(today.year, today.month))-1)/7)) %}
+            {% for t in range(math.ceil((sum(calendar.monthrange(today.year, month))-1)/7)) %}
             <tr>
                 {% for i in range(7) %}
-                    {% if i+(t*7)+1 <= sum(calendar.monthrange(today.year, today.month)) %}
+                    {% if i+(t*7)+1 <= sum(calendar.monthrange(today.year, month)) %}
                         <td>
-                            {% if i+(t*7)+1 > calendar.monthrange(today.year, today.month)[0] %}
-                                {{ i+(t*7)+1-calendar.monthrange(today.year, today.month)[0] }}
+                            {% if i+(t*7)+1 > calendar.monthrange(today.year, month)[0] %}
+                                {{ i+(t*7)+1-calendar.monthrange(today.year, month)[0] }}
                                 <ul>
                                     {% for index, event in enumerate(eventDates, start=0) %}
-                                        {% if date(today.year, today.month, i+(t*7)+1-calendar.monthrange(today.year, today.month)[0]) == date.fromisoformat(event) %}
+                                        {% if date(today.year, month, i+(t*7)+1-calendar.monthrange(today.year, month)[0]) == date.fromisoformat(event) %}
                                             
                                                 <a id="eventName" href="{{ url_for('get_event', event_id=events[index].id) }}">{{ events[index].title }}</a>
                                             <br>
                                         {% endif %}
                                     {% endfor %}
                                 </ul>
-                            {% elif i+(t*7)+1 <= calendar.monthrange(today.year, today.month)[0] %}
-                                {{ calendar.monthrange(today.year, today.month-1)[1]-(calendar.monthrange(today.year, today.month)[0]-(i+(t*7)+1)) }}
+                            {% elif i+(t*7)+1 <= calendar.monthrange(today.year, month)[0] %}
+                                {{ calendar.monthrange(today.year, month-1)[1]-(calendar.monthrange(today.year, month)[0]-(i+(t*7)+1)) }}
                                 <ul>
                                     {% for index, event in enumerate(eventDates, start=0) %}
-                                        {% if date(today.year, today.month-1, calendar.monthrange(today.year, today.month-1)[1]-(calendar.monthrange(today.year, today.month)[0]-(i+(t*7)+1))) == date.fromisoformat(event) %}
+                                        {% if date(today.year, month-1, calendar.monthrange(today.year, month-1)[1]-(calendar.monthrange(today.year, month)[0]-(i+(t*7)+1))) == date.fromisoformat(event) %}
                                             <li>
                                                 <a href="{{ url_for('get_event', event_id=events[index].id) }}">{{ events[index].title }}</a>
                                             </li>
@@ -86,12 +86,12 @@
                                 </ul>
                             {% endif %}
                         </td>
-                    {% elif i+(t*7)+1 > sum(calendar.monthrange(today.year, today.month)) and i+(t*7)+1-sum(calendar.monthrange(today.year, today.month)) <= (t+1)*7 %}
+                    {% elif i+(t*7)+1 > sum(calendar.monthrange(today.year,  month)) and i+(t*7)+1-sum(calendar.monthrange(today.year, month)) <= (t+1)*7 %}
                         <td>
-                            {{ (i+(t*7)+1-calendar.monthrange(today.year, today.month)[0]) - calendar.monthrange(today.year, today.month)[1] }}
+                            {{ (i+(t*7)+1-calendar.monthrange(today.year, month)[0]) - calendar.monthrange(today.year, month)[1] }}
                             <ul>
                                 {% for index, event in enumerate(eventDates, start=0) %}
-                                    {% if date(today.year, today.month+1, (i+(t*7)+1-calendar.monthrange(today.year, today.month)[0]) - calendar.monthrange(today.year, today.month)[1]) == date.fromisoformat(event) %}
+                                    {% if date(today.year, month+1, (i+(t*7)+1-calendar.monthrange(today.year, month)[0]) - calendar.monthrange(today.year, month)[1]) == date.fromisoformat(event) %}
                                         <li>
                                             <a href="{{ url_for('get_event', event_id=events[index].id) }}">{{ events[index].title }}</a>
                                         </li>

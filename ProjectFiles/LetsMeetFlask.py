@@ -59,17 +59,21 @@ def register():
     return render_template('LetsMeetRegister.html', form=register_form)
 
 @app.route('/')
-@app.route('/index')
+@app.route('/index', methods=['GET', 'POST'])
 def index():
     if session.get('user'):
         my_events = db.session.query(Event).all()
         eventDays = []
         for i in my_events:
             eventDays.append(i.date)
+        if request.method == 'POST':
+            month = int(request.form["calendar_month"])
+        else:
+            month = date.today().month
         # Returns a template with many python arguments to make the calendar work on the Home page
         return render_template('LetsMeetMain.html', today=date.today(), math=math, calendar=calendar,
                                user=session['user'], date=date, eventDates=eventDays, events=my_events, sum=sum,
-                               enumerate=enumerate)
+                               enumerate=enumerate, month=month)
     return redirect(url_for('login'))
 
 @app.route('/events')
