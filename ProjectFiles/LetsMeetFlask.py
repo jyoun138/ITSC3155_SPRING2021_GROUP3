@@ -170,7 +170,7 @@ def calendarpage():
 def friendspage():
     if session.get('user'):
         # retrieve users from database
-        list_users = db.session.query(Friends).filter_by(user_id=session['user_id']).all()
+        list_users = db.session.query(User).all()
         return render_template('LetsMeetFriends.html', users=list_users, user=session['user'])
     else:
         return redirect(url_for('login'))
