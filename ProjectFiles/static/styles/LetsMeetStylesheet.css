@@ -123,6 +123,7 @@ form {
 
 #newEventInput, #eventDate {
     margin-left: 40px;
+    margin-bottom: .5em;
 	padding: .25em;
 	font-size: 1em;
 	margin-bottom: 20px;
@@ -141,10 +142,13 @@ footer {
 }
 
 /*  
+<<<<<<< HEAD
     Custom font retrieved from 1001freefonts.com under permission of
     terms of service listed therein. 
     https://www.1001freefonts.com/lemonbrush-font.html
     
+=======
+>>>>>>> 07c6a3062da914b30137fab12ff66472f69d1e18
     Custom font retrieved from 1001freefonts.com under permission of 
     terms of service listed therein. 
     https://www.1001freefonts.com/lemon-brush.font
