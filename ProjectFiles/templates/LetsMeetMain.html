@@ -40,7 +40,7 @@
                 <option value=11>Nov</option>
                 <option value=12>Dec</option>
             </select>
-            <input type="submit" value="Submit">
+            <input id="submitButton" type="submit" value="Submit">
         </form>
 
         <table>
@@ -61,14 +61,15 @@
             <tr>
                 {% for i in range(7) %}
                     {% if i+(t*7)+1 <= sum(calendar.monthrange(today.year, month)) %}
-                        <td>
+                        <td>                            
                             {% if i+(t*7)+1 > calendar.monthrange(today.year, month)[0] %}
                                 {{ i+(t*7)+1-calendar.monthrange(today.year, month)[0] }}
                                 <ul>
                                     {% for index, event in enumerate(eventDates, start=0) %}
                                         {% if date(today.year, month, i+(t*7)+1-calendar.monthrange(today.year, month)[0]) == date.fromisoformat(event) %}
-                                            
+                                            <li>
                                                 <a id="eventName" href="{{ url_for('get_event', event_id=events[index].id) }}">{{ events[index].title }}</a>
+                                            </li>
                                             <br>
                                         {% endif %}
                                     {% endfor %}
@@ -87,7 +88,7 @@
                             {% endif %}
                         </td>
                     {% elif i+(t*7)+1 > sum(calendar.monthrange(today.year,  month)) and i+(t*7)+1-sum(calendar.monthrange(today.year, month)) <= (t+1)*7 %}
-                        <td>
+                         <td id="next">
                             {{ (i+(t*7)+1-calendar.monthrange(today.year, month)[0]) - calendar.monthrange(today.year, month)[1] }}
                             <ul>
                                 {% for index, event in enumerate(eventDates, start=0) %}
