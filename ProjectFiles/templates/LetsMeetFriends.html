@@ -26,7 +26,11 @@
             <h3>Users</h3>
             <form>
             {% for user in users %}
-                <p>{{user.username}}</p> <button type="button"> Add </button> <br>
+                {% if user_id == user_id %}
+                    <p>{{user.username}} - You </p>
+                {% else %}
+                    <p>{{user.username}}</p> <button type="button"> Add </button> <br>
+                {% endif %}
             {% endfor %}
             </form>
 
