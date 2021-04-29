@@ -22,18 +22,13 @@
         </header>
 
         <h3>Welcome {{user}} to the LetsMeet Site!</h3>
-        <div id="users">
+        <div class="users;">
             <h3>Users</h3>
             <form>
             {% for user in users %}
-                {% if user_id == user_id %}
-                    <p>{{user.username}} - You </p>
-                {% else %}
-                    <p>{{user.username}}</p> <button type="button"> Add </button> <br>
-                {% endif %}
+                <p style="display:inline-block;">{{user.username}}</p> <button type="button"> Add </button> <br>
             {% endfor %}
             </form>
-
         </div>
 
 
