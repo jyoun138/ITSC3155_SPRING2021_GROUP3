@@ -24,9 +24,11 @@
         <h3>Welcome {{user}} to the LetsMeet Site!</h3>
         <div id="users">
             <h3>Users</h3>
+            <form>
             {% for user in users %}
-                <p>{{user.username}}</p>
+                <p>{{user.username}}</p> <button type="button"> Add </button> <br>
             {% endfor %}
+            </form>
 
         </div>
 
