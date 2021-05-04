@@ -3,12 +3,14 @@ from flask import Flask  # Flask is the web app that we will customize
 from flask import render_template
 from flask import request
 from flask import redirect, url_for, session
+from flask_sqlalchemy import SQLAlchemy
+
 from database import db
-from models import Event as Event, User as User, RSVP as RSVP, Friends as Friends
+from models import Event as Event, User as User, RSVP as RSVP, Comment as Comment, Friends as Friends
 from datetime import datetime, date
 import calendar
 import math as math
-from forms import RegisterForm, LoginForm, EventForm
+from forms import RegisterForm, LoginForm, EventForm, CommentForm
 import bcrypt
 
 app = Flask(__name__)  # create an app
@@ -17,6 +19,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'SE3155'
 # Bind SQLAlchemy db object to this Flask app
 db.init_app(app)
+# db = SQLAlchemy(app)
 # Setup models
 with app.app_context():
     db.create_all()  # run under the app context
@@ -37,10 +40,12 @@ def login():
             session['user'] = the_user.username
             session['user_id'] = the_user.id
             return redirect(url_for('get_events'))
+
         login_form.password.errors = ["Incorrect username or password"]
         return render_template('LetsMeetLogin.html', form=login_form)
     else:
         return render_template('LetsMeetLogin.html', form=login_form)
+
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
@@ -57,6 +62,7 @@ def register():
         session['user_id'] = new_user.id
         return redirect(url_for('get_events'))
     return render_template('LetsMeetRegister.html', form=register_form)
+
 
 @app.route('/')
 @app.route('/index', methods=['GET', 'POST'])
@@ -76,6 +82,7 @@ def index():
                                enumerate=enumerate, month=month)
     return redirect(url_for('login'))
 
+
 @app.route('/events')
 def get_events():
     if session.get('user'):
@@ -83,12 +90,18 @@ def get_events():
         return render_template('LetsMeetEvents.html', events=my_events, user=session['user'])
     return redirect(url_for('login'))
 
+
 @app.route('/events/<event_id>')
 def get_event(event_id):
     if session.get('user'):
         my_event = db.session.query(Event).filter_by(id=event_id).one()
-        return render_template('LetsMeetEvent.html', event=my_event, user=session['user'], user_id=session['user_id'])
+
+        form = CommentForm()
+
+        return render_template('LetsMeetEvent.html', event=my_event, user=session['user'], user_id=session['user_id'],
+                               form=form)
     return redirect(url_for('login'))
+
 
 # Trying to figure out how to add RSVP'd Event id's to Users database (see models.py/Users)
 @app.route('/events/rsvp/<event_id>', methods=['GET', 'POST'])
@@ -100,6 +113,7 @@ def RSVP_event(event_id):
         return redirect(url_for('get_events'))
     else:
         return redirect(url_for('login'))
+
 
 @app.route('/events/new', methods=['GET', 'POST'])
 def new_event():
@@ -116,6 +130,7 @@ def new_event():
         else:
             return render_template('LetsMeetNew.html', user=session['user'], form=eventForm, today=date.today())
     return redirect(url_for('login'))
+
 
 @app.route('/events/edit/<event_id>', methods=['GET', 'POST'])
 def edit_event(event_id):
@@ -139,6 +154,7 @@ def edit_event(event_id):
     else:
         return redirect(url_for('login'))
 
+
 @app.route('/events/<event_id>/remove_event')
 def remove_event(event_id):
     if session.get('user'):
@@ -146,11 +162,31 @@ def remove_event(event_id):
         db.session.commit()
     return redirect(url_for('index'))
 
+
 @app.route('/logout')
 def logout():
     if session.get('user'):
         session.clear()
     return redirect(url_for('login'))
+
+
+@app.route('/events/<event_id>/comment', methods=['POST'])
+def new_comment(event_id):
+    if session.get('user'):
+        commentForm = CommentForm()
+        # validate_on_submit only validates using POST
+        if commentForm.validate_on_submit():
+            # get comment data
+            comment_text = request.form['comment']
+            new_record = Comment(comment_text, int(event_id), session['user_id'])
+            db.session.add(new_record)
+            db.session.commit()
+
+        return redirect(url_for('get_event', event_id=event_id))
+
+    else:
+        return redirect(url_for('login'))
+
 
 @app.route('/calendar')
 def calendarpage():
@@ -165,6 +201,7 @@ def calendarpage():
                                enumerate=enumerate)
     return redirect(url_for('login'))
 
+
 # route for friends list
 @app.route('/friends')
 def friendspage():
@@ -175,9 +212,10 @@ def friendspage():
     else:
         return redirect(url_for('login'))
 
+
 # an attempt to create add friend route
-#@app.route('/friends/add_friend', methods=['GET', 'POST'])
-#def add_friend(user_id):
+# @app.route('/friends/add_friend', methods=['GET', 'POST'])
+# def add_friend(user_id):
 #    if session.get('user'):
 #        new_friend = Friends(session['user_id'], user_id)
 #        db.session.add(new_friend)
@@ -187,7 +225,6 @@ def friendspage():
 #       return redirect(url_for('login'))
 
 app.run(host=os.getenv('IP', '127.0.0.1'), port=int(os.getenv('PORT', 5000)), debug=True)
-
 
 # To see the web page in your web browser, go to the url,
 #   http://127.0.0.1:5000

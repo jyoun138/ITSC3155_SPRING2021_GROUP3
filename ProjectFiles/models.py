@@ -1,5 +1,5 @@
 from database import db
-from datetime import datetime
+from datetime import datetime, date
 
 
 class Event(db.Model):
@@ -8,6 +8,7 @@ class Event(db.Model):
     text = db.Column("text", db.String(100))
     date = db.Column("date", db.String(50))
     user_id = db.Column("user_id", db.Integer, db.ForeignKey('user.id'))
+    comments = db.relationship("Comment", backref="note", cascade="all, delete-orphan", lazy=True)
 
     def __init__(self, title, text, date, id):
         self.title = title
@@ -25,6 +26,8 @@ class User(db.Model):
     password = db.Column("password", db.String(30))
     events = db.relationship("Event", backref="user", lazy=True)
     friends = db.relationship("Friends", backref="user", lazy=True)
+    comments = db.relationship("Comment", backref="user", lazy=True)
+
     # Trying to figure out a way to save all Event id values into a string that will
     # be recognized by the database
     # RSVP_events =
@@ -34,6 +37,7 @@ class User(db.Model):
 
     def __repr__(self):
         return f"User('{self.id}', '{self.username}, '{self.password}')"
+
 
 # an attempt to create friends list
 class Friends(db.Model):
@@ -50,6 +54,7 @@ class Friends(db.Model):
     def __repr__(self):
         return f"User('{self.id}', '{self.user_id}', '{self.user_id_2}', '{self.friend_username}')"
 
+
 class RSVP(db.Model):
     RSVP_id = db.Column("RSVP_id", db.Integer, primary_key=True)
     user_id = db.Column("user_id", db.Integer, db.ForeignKey('user.id'))
@@ -61,3 +66,17 @@ class RSVP(db.Model):
 
     def __repr__(self):
         return f"RSVP('{self.user_id}', '{self.event_id}')"
+
+
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    date_posted = db.Column(db.DateTime, nullable=False)
+    content = db.Column(db.VARCHAR, nullable=False)
+    event_id = db.Column(db.Integer, db.ForeignKey("event.id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+
+    def __init__(self, content, event_id, user_id):
+        self.date_posted = date.today()
+        self.content = content
+        self.event_id = event_id
+        self.user_id = user_id

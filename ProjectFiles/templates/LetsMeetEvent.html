@@ -39,12 +39,35 @@
                 <td>{{ event.date }}</td>
             </tr>
         </table>
+
+        {% if event.comments %}
+        {% if event.comments|length > 0 %}
+        <h2>Comments</h2>
+        <ul>
+            {% for comment in event.comments %}
+            <li>{{ comment.content }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endif %}
+        <form action="{{ url_for('new_comment', event_id=event.id) }}" method="post">
+            <div class="formwrapper">
+                <h2 class="title">Add a comment</h2>
+                <div class="form-field">
+                    {{ form.comment.label }} <br/> {{ form.comment }}
+                </div>
+                {{ form.submit }}
+            </div>
+        </form>
+
+
         {% if event.user_id == user_id %}
             <a href="{{ url_for('remove_event', event_id=event.id) }}">Remove Event</a> ||
             <a href="{{ url_for('edit_event', event_id=event.id) }}">Edit</a>
         {% else %}
             <a href="{{ url_for('RSVP_event', event_id=event.id) }}">RSVP for this Event</a>
         {% endif %}
+
 
     </body>
     <footer>

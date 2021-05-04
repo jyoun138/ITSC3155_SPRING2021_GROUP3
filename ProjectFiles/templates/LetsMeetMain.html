@@ -55,7 +55,7 @@
                 <th>Saturday</th>
                 <th>Sunday</th>
             </tr>
-            <!-- i+(t*7)+1 is the eqation to find the physical calendar (td) number
+            <!-- i+(t*7)+1 is the equation to find the physical calendar (td) number
             Example: the top right most square has i=0 and t=0 thus 0+(0*7)+1=1 
             and the block next to it has i=1 and t=0 thus 1+(0*7)+1=2 -->
             {% for t in range(math.ceil((sum(calendar.monthrange(today.year, month))-1)/7)) %}
