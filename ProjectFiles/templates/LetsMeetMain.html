@@ -16,6 +16,7 @@
                     <li id="currPage"><a href="{{ url_for('index') }}"> Home</a></li>
                     <li><a href="{{ url_for('get_events') }}"> My Events</a></li>
                     <li><a href="{{ url_for('new_event') }}">Add Event</a></li>
+                    <li><a href="{{ url_for('friendspage') }}">Friends</a></li>
                     <li><a href="{{ url_for('logout') }}">Logout</a></li>
                     <!-- <li><a href="{{ url_for('calendarpage') }}">Calendar</a></li> -->
                 </ul>
@@ -40,7 +41,7 @@
                 <option value=11>Nov</option>
                 <option value=12>Dec</option>
             </select>
-            <input type="submit" value="Submit">
+            <input id="submitButton" type="submit" value="Submit">
         </form>
 
         <table>
@@ -54,14 +55,14 @@
                 <th>Saturday</th>
                 <th>Sunday</th>
             </tr>
-            <!-- i+(t*7)+1 is the eqation to find the physical calendar (td) number
+            <!-- i+(t*7)+1 is the equation to find the physical calendar (td) number
             Example: the top right most square has i=0 and t=0 thus 0+(0*7)+1=1 
             and the block next to it has i=1 and t=0 thus 1+(0*7)+1=2 -->
             {% for t in range(math.ceil((sum(calendar.monthrange(today.year, month))-1)/7)) %}
             <tr>
                 {% for i in range(7) %}
                     {% if i+(t*7)+1 <= sum(calendar.monthrange(today.year, month)) %}
-                        <td>
+                        <td>                            
                             {% if i+(t*7)+1 > calendar.monthrange(today.year, month)[0] %}
                                 {{ i+(t*7)+1-calendar.monthrange(today.year, month)[0] }}
                                 <ul>
@@ -70,6 +71,7 @@
                                             <li>
                                                 <a id="eventName" href="{{ url_for('get_event', event_id=events[index].id) }}">{{ events[index].title }}</a>
                                             </li>
+                         <br>
                                         {% endif %}
                                     {% endfor %}
                                 </ul>
@@ -87,7 +89,7 @@
                             {% endif %}
                         </td>
                     {% elif i+(t*7)+1 > sum(calendar.monthrange(today.year,  month)) and i+(t*7)+1-sum(calendar.monthrange(today.year, month)) <= (t+1)*7 %}
-                        <td>
+                         <td id="next">
                             {{ (i+(t*7)+1-calendar.monthrange(today.year, month)[0]) - calendar.monthrange(today.year, month)[1] }}
                             <ul>
                                 {% for index, event in enumerate(eventDates, start=0) %}

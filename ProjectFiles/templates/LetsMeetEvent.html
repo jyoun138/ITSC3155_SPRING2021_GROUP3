@@ -17,6 +17,7 @@
                     <li><a href="{{ url_for('index') }}">Home</a></li>
                     <li id="currPage"><a href="{{ url_for('get_events') }}"> My Events</a></li>
                     <li><a href="{{ url_for('new_event') }}">Add Event</a></li>
+                    <li><a href="{{ url_for('friendspage') }}">Friends</a></li>
                     <li><a href="{{ url_for('logout') }}">Logout</a></li>
                 </ul>
             </nav>
@@ -39,6 +40,7 @@
             </tr>
         </table>
 
+<<<<<<< HEAD
         {% if all_RSVPs %}
             <h3>RSVP'd users:</h3>
             <table>
@@ -50,6 +52,29 @@
             </table>
         {% endif %}
         
+=======
+        {% if event.comments %}
+        {% if event.comments|length > 0 %}
+        <h2>Comments</h2>
+        <ul>
+            {% for comment in event.comments %}
+            <li>{{ comment.content }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endif %}
+        <form action="{{ url_for('new_comment', event_id=event.id) }}" method="post">
+            <div class="formwrapper">
+                <h2 class="title">Add a comment</h2>
+                <div class="form-field">
+                    {{ form.comment.label }} <br/> {{ form.comment }}
+                </div>
+                {{ form.submit }}
+            </div>
+        </form>
+
+
+>>>>>>> f7ba948de0f151c0fa2d00302a857e3d1aae364b
         {% if event.user_id == user_id %}
             <a href="{{ url_for('remove_event', event_id=event.id) }}">Remove Event</a> ||
             <a href="{{ url_for('edit_event', event_id=event.id) }}">Edit</a>
@@ -60,6 +85,7 @@
                 <a href="{{ url_for('remove_RSVP_event', event_id=event.id, RSVP_id=this_RSVP.id) }}">Remove RSVP for this Event</a>
             {% endif %}
         {% endif %}
+
 
     </body>
     <footer>

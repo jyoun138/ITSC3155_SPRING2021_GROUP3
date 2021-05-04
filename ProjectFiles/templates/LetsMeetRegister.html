@@ -18,9 +18,7 @@
                 </ul>
             </nav>
         </header>
-    <body>
-
-    <body>        
+          
         <h2>Welcome {{user}} to the LetsMeet Site!</h2>
         <form method="POST" action="/register">
             <span id="theLabel">{{ form.username.label }}</span>
@@ -76,6 +74,8 @@
                 {% endfor %}
             </span>
             {% endif %}
+            <br>
+            <br>        
             {{ form.submit }}
         </form>
 

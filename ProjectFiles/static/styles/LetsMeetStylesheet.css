@@ -85,12 +85,16 @@ h2, h3 {
 
 /* Format for the user input */
 form {
-    background-color: #f8f8f8;
+    #background-color: #f8f8f8;
+	background-color: white;
 	border: solid 2px;
 	border-radius: 10px;
 	padding: 20px;
-	max-width: 100%;
-    background-color: rgb(237, 237, 237);
+	max-width: fit-content;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+    #background-color: rgb(237, 237, 237);
 }
 
 /* formatting for the labels for the form input boxes */
@@ -113,7 +117,7 @@ form {
 
 #newEventLabel, #dateLabel {
     float: left;
-    width: 7em;
+    width: 7em;    
     text-align: right;
 }
 
@@ -122,6 +126,7 @@ form {
     margin-bottom: .5em;
 	padding: .25em;
 	font-size: 1em;
+	margin-bottom: 20px;
 }
 
 #errors {
@@ -137,6 +142,10 @@ footer {
 }
 
 /*  
+    Custom font retrieved from 1001freefonts.com under permission of
+    terms of service listed therein. 
+    https://www.1001freefonts.com/lemonbrush-font.html
+    
     Custom font retrieved from 1001freefonts.com under permission of 
     terms of service listed therein. 
     https://www.1001freefonts.com/lemon-brush.font
@@ -146,8 +155,6 @@ footer {
     src: url(./LemonBrushFont.otf);
 }
 
-
-    
 table, th, td {
     border-radius: 10px;    
     border-collapse: collapse;
@@ -165,6 +172,7 @@ caption {
     font-size: 30px;
     border: 5px solid #83f29f;    
     border-radius: 10px;
+    margin-top: 30px;
 }   
 
 td {
@@ -201,4 +209,28 @@ a{
 
 #eventName {
     text-align: left;    
+}
+
+/* Button CSS */
+input[type = submit] {
+  background-color: #05f092;
+  color: white;
+  padding: 8px 8px 8px 8px;
+  border: 2px solid #07db86;
+  margin-left:12px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+} 
+
+input[type = submit]#submitButton:hover {
+  background-color: white; /* Green */
+  color: #4f464d;
+  border: 2px solid #07db86;
+}
+
+#next {
+    background-color: #ba3bf5;
+}
+#prev{
+    background-color: #ff03c4;
 }
