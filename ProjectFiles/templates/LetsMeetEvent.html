@@ -40,7 +40,6 @@
             </tr>
         </table>
 
-<<<<<<< HEAD
         {% if all_RSVPs %}
             <h3>RSVP'd users:</h3>
             <table>
@@ -52,7 +51,6 @@
             </table>
         {% endif %}
         
-=======
         {% if event.comments %}
         {% if event.comments|length > 0 %}
         <h2>Comments</h2>
@@ -73,8 +71,6 @@
             </div>
         </form>
 
-
->>>>>>> f7ba948de0f151c0fa2d00302a857e3d1aae364b
         {% if event.user_id == user_id %}
             <a href="{{ url_for('remove_event', event_id=event.id) }}">Remove Event</a> ||
             <a href="{{ url_for('edit_event', event_id=event.id) }}">Edit</a>
