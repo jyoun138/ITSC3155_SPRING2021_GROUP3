@@ -19,7 +19,7 @@ app.config['SECRET_KEY'] = 'SE3155'
 db.init_app(app)
 # Setup models
 with app.app_context():
-    db.create_all()  # run under the app context
+    db.create_all() # run under the app context
 
 
 @app.route('/login', methods=['POST', 'GET'])
@@ -87,17 +87,20 @@ def get_events():
 def get_event(event_id):
     if session.get('user'):
         my_event = db.session.query(Event).filter_by(id=event_id).one()
-        return render_template('LetsMeetEvent.html', event=my_event, user=session['user'], user_id=session['user_id'])
+        this_RSVP = db.session.query(RSVP).filter_by(event_id=event_id, user_id=session['user_id']).one_or_none()
+        all_RSVPs = db.session.query(RSVP).filter_by(event_id=event_id).all()
+        return render_template('LetsMeetEvent.html', event=my_event, user=session['user'], user_id=session['user_id'],
+                               this_RSVP=this_RSVP, all_RSVPs=all_RSVPs)
     return redirect(url_for('login'))
 
 # Trying to figure out how to add RSVP'd Event id's to Users database (see models.py/Users)
 @app.route('/events/rsvp/<event_id>', methods=['GET', 'POST'])
 def RSVP_event(event_id):
     if session.get('user'):
-        new_RSVP = RSVP(session['user_id'], event_id)
+        new_RSVP = RSVP(session['user_id'], session['user'], event_id)
         db.session.add(new_RSVP)
         db.session.commit()
-        return redirect(url_for('get_events'))
+        return redirect(url_for('get_event', event_id=event_id))
     else:
         return redirect(url_for('login'))
 
@@ -145,6 +148,13 @@ def remove_event(event_id):
         db.session.query(Event).filter_by(id=event_id).delete()
         db.session.commit()
     return redirect(url_for('index'))
+
+@app.route('/events/rsvp/<event_id>/remove_RSVP_event/<RSVP_id>', methods=['GET', 'POST'])
+def remove_RSVP_event(event_id, RSVP_id):
+    if session.get('user'):
+        db.session.query(RSVP).filter_by(id=RSVP_id).delete()
+        db.session.commit()
+    return redirect(url_for('get_event', event_id=event_id))
 
 @app.route('/logout')
 def logout():

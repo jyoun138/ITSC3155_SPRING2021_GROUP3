@@ -38,11 +38,27 @@
                 <td>{{ event.date }}</td>
             </tr>
         </table>
+
+        {% if all_RSVPs %}
+            <h3>RSVP'd users:</h3>
+            <table>
+                <tr>
+                    {% for rsvp in all_RSVPs %}
+                        <td>{{ rsvp.user_username }}</td>
+                    {% endfor %}
+                </tr>
+            </table>
+        {% endif %}
+        
         {% if event.user_id == user_id %}
             <a href="{{ url_for('remove_event', event_id=event.id) }}">Remove Event</a> ||
             <a href="{{ url_for('edit_event', event_id=event.id) }}">Edit</a>
         {% else %}
-            <a href="{{ url_for('RSVP_event', event_id=event.id) }}">RSVP for this Event</a>
+            {% if this_RSVP is none %}
+                <a href="{{ url_for('RSVP_event', event_id=event.id) }}">RSVP for this Event</a>
+            {% else %}
+                <a href="{{ url_for('remove_RSVP_event', event_id=event.id, RSVP_id=this_RSVP.id) }}">Remove RSVP for this Event</a>
+            {% endif %}
         {% endif %}
 
     </body>
