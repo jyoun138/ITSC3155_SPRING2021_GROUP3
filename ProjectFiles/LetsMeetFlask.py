@@ -230,7 +230,9 @@ def add_friend(user_id):
 
         if request.method == 'POST' and friendForm.validate_on_submit():
 
-            new_friend = Friends(session['user_id'], user_id)
+            friend_username = request.form['friendUsername']
+
+            new_friend = Friends(session['user_id'], int(user_id), friendName=friend_username)
             db.session.add(new_friend)
             db.session.commit()
 
