@@ -41,7 +41,7 @@ class User(db.Model):
 
 # an attempt to create friends list
 class Friend(db.Model):
-    id = db.Column("id", db.Integer, primary_key=True)
+    id = db.Column("friend_id", db.Integer, primary_key=True)
     user_id = db.Column("user_id", db.Integer, db.ForeignKey('user.id'))
     friendUsername = db.Column("username", db.String(100))
 
