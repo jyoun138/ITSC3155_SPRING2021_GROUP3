@@ -242,7 +242,7 @@ def add_friend():
         return redirect(url_for('login'))
 
 @app.route('/friends/remove', methods=['GET', 'POST'])
-def remove_event(friend_id):
+def remove_friend(friend_id):
     if session.get('user'):
         db.session.query(Friend).filter_by(id=friend_id).delete()
         db.session.commit()
