@@ -26,13 +26,25 @@
         <div class="users">
             <h3>Users</h3>
 
-            {% for user in users %}
-                <p style="display:inline-block;">{{user.username}}</p>
-            {% endfor %}
+            <form>
+                {% for user in users %}
+                    <p style="display:inline-block;">{{user.username}}</p> <br>
+                {% endfor %}
+            </form>
+
+        <br>
+
+        <p>
+            Please enter the username from the following list above to add them to your friends list.
+            Enter only one username into the text box.
+        </p>
+
+        <br>
 
         </div>
 
         <form action="{% if friends %}{{ friends.id }}{% else %}new{% endif %}" method="post">
+
             <span id="newEventLabel">
                 {{ form.friendUsername.label }}
             </span>
@@ -41,7 +53,7 @@
                 {{ form.friendUsername }}
             </span>
             {{form.add}}
-            
+
         </form>
 
 
