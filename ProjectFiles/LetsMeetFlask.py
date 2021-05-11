@@ -221,7 +221,7 @@ def friendspage():
 
 # an attempt to create add friend route
 
-@app.route('/friends/add', methods=['GET', 'POST'])
+@app.route('/friends/new', methods=['GET', 'POST'])
 def add_friend():
     if session.get('user'):
         friendForm = FriendForm()
@@ -230,10 +230,10 @@ def add_friend():
 
             friend_username = request.form['friendUsername']
 
-            new_friend = Friend(id=session['user_id'], friendName=friend_username)
+            new_friend = Friend(session['user_id'], friend_username)
             db.session.add(new_friend)
             db.session.commit()
-            return redirect(url_for('LetsMeetFriend.html'))
+            return redirect(url_for('friendspage'))
         else:
             list_users = db.session.query(User).all()
             return render_template('LetsMeetAddFriend.html', users=list_users, user=session['user'], form=friendForm)
