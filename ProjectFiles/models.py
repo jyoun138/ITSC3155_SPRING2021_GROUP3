@@ -45,13 +45,12 @@ class Friend(db.Model):
     user_id = db.Column("user_id", db.Integer, db.ForeignKey('user.id'))
     friendUsername = db.Column("username", db.String(100))
 
-    def __init__(self, user_id, user_id_2, friendUsername):
+    def __init__(self, user_id, friendUsername):
         self.user_id = user_id
-        self.user_id_2 = user_id_2
         self.friendUsername = friendUsername
 
     def __repr__(self):
-        return f"User('{self.id}', '{self.user_id}', '{self.user_id_2}', '{self.friend_username}')"
+        return f"User('{self.id}', '{self.user_id}', '{self.friend_username}')"
 
 
 class RSVP(db.Model):
