@@ -23,28 +23,14 @@
         </header>
 
         <h3>Welcome {{user}} to the LetsMeet Site!</h3>
-        <div class="users">
-            <h3>Users</h3>
+        <div class="friends">
+            <h3>Friends</h3>
             <form>
-            {% for user in users %}
-                <p style="display:inline-block;">{{user.username}}</p> <button type="button"> Add </button> <br>
+            {% for friend in friends %}
+                <p style="display:inline-block;">{{friend.username}}
             {% endfor %}
             </form>
         </div>
-
-        <form action="{{ url_for('friendspage'}}" method="post">
-            <div class="formwrapper">
-                <h2 class="title">Add user as friend</h2>
-                <div class="form-field">
-                    {{ form.friendUsername.label }} <br/> {{ form.friendUsername }}
-                </div>
-                {{ form.submit }}
-            </div>
-        </form>
-
-
-
-
 
     </body>
     <footer>

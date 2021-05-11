@@ -6,7 +6,7 @@ from flask import redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 
 from database import db
-from models import Event as Event, User as User, RSVP as RSVP, Comment as Comment, Friends as Friends
+from models import Event as Event, User as User, RSVP as RSVP, Comment as Comment, Friend as Friend
 from datetime import datetime, date
 import calendar
 import math as math
@@ -213,7 +213,7 @@ def calendarpage():
 def friendspage():
     if session.get('user'):
         # retrieve users from database
-        list_friends = db.session.query(Friends).all()
+        list_friends = db.session.query(Friend).all()
         return render_template('LetsMeetFriends.html', friends=list_friends, user=session['user'])
     else:
         return redirect(url_for('login'))
@@ -221,8 +221,8 @@ def friendspage():
 
 # an attempt to create add friend route
 
-@app.route('/friends/<friend_id>/friend', methods=['POST'])
-def add_friend(friend_id):
+@app.route('/friends/add', methods=['GET', 'POST'])
+def add_friend():
     if session.get('user'):
         friendForm = FriendForm()
 
@@ -230,13 +230,13 @@ def add_friend(friend_id):
 
             friend_username = request.form['friendUsername']
 
-            new_friend = Friends(session['user_id'], int(friend_id), friendName=friend_username)
+            new_friend = Friend(id=session['user_id'], friendName=friend_username)
             db.session.add(new_friend)
             db.session.commit()
-            return redirect(url_for('LetsMeetFriend.html', friend_id=friend_id))
+            return redirect(url_for('LetsMeetFriend.html'))
         else:
             list_users = db.session.query(User).all()
-            return render_template('LetsMeetFriends.html', users=list_users, user=session['user'])
+            return render_template('LetsMeetAddFriend.html', users=list_users, user=session['user'], form=friendForm)
 
     else:
         return redirect(url_for('login'))
