@@ -62,6 +62,6 @@ class FriendForm(FlaskForm):
     class Meta:
         csrf = False
 
-    username = StringField('Username', validators=[Length(1, 20)])
+    friendUsername = StringField('Username', validators=[Length(1, 20)])
 
     submit = SubmitField('Add User')
