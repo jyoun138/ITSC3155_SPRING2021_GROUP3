@@ -213,18 +213,16 @@ def calendarpage():
 def friendspage():
     if session.get('user'):
         # retrieve users from database
-        list_users = db.session.query(User).all()
-        return render_template('LetsMeetFriends.html', users=list_users, user=session['user'])
+        list_friends = db.session.query(Friends).all()
+        return render_template('LetsMeetFriends.html', friends=list_friends, user=session['user'])
     else:
         return redirect(url_for('login'))
 
 
-
-
 # an attempt to create add friend route
 
-@app.route('/friends/add_friend', methods=['POST'])
-def add_friend(user_id):
+@app.route('/friends/<friend_id>/friend', methods=['POST'])
+def add_friend(friend_id):
     if session.get('user'):
         friendForm = FriendForm()
 
@@ -232,11 +230,13 @@ def add_friend(user_id):
 
             friend_username = request.form['friendUsername']
 
-            new_friend = Friends(session['user_id'], int(user_id), friendName=friend_username)
+            new_friend = Friends(session['user_id'], int(friend_id), friendName=friend_username)
             db.session.add(new_friend)
             db.session.commit()
-
-        return redirect(url_for('friendspage'))
+            return redirect(url_for('LetsMeetFriend.html', friend_id=friend_id))
+        else:
+            list_users = db.session.query(User).all()
+            return render_template('LetsMeetFriends.html', users=list_users, user=session['user'])
 
     else:
         return redirect(url_for('login'))

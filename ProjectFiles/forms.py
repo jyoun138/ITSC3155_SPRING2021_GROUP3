@@ -64,4 +64,4 @@ class FriendForm(FlaskForm):
 
     friendUsername = StringField('Username', validators=[Length(1, 20)])
 
-    submit = SubmitField('Add User')
+    add = SubmitField('Add User')
