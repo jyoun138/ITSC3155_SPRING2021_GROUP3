@@ -210,11 +210,10 @@ def calendarpage():
 
 # route for friends list
 @app.route('/friends')
-def friendspage(friend_id):
+def friendspage():
     if session.get('user'):
         # retrieve users from database
         list_friends = db.session.query(Friend).filter_by(user_id=session['user_id']).all()
-        db.session.query(Friend).filter_by(id=friend_id).delete()
         return render_template('LetsMeetFriends.html', friends=list_friends, user=session['user'])
     else:
         return redirect(url_for('login'))
@@ -242,13 +241,13 @@ def add_friend():
     else:
         return redirect(url_for('login'))
 
-#@app.route('/friends/remove', methods=['GET', 'POST'])
+@app.route('/friends/remove', methods=['GET', 'POST'])
 
-#def remove_event(friend_id):
-#    if session.get('user'):
-#        db.session.query(Friend).filter_by(id=friend_id).delete()
-#        db.session.commit()
-#    return redirect(url_for('index'))
+def remove_event(friend_id):
+    if session.get('user'):
+        db.session.query(Friend).filter_by(id=friend_id).delete()
+        db.session.commit()
+    return redirect(url_for('index'))
 
 app.run(host=os.getenv('IP', '127.0.0.1'), port=int(os.getenv('PORT', 5000)), debug=True)
 
