@@ -25,7 +25,7 @@ class User(db.Model):
     username = db.Column("username", db.String(100))
     password = db.Column("password", db.String(30))
     events = db.relationship("Event", backref="user", lazy=True)
-    friends = db.relationship("Friends", backref="user", lazy=True)
+    friends = db.relationship("Friend", backref="user", lazy=True)
     comments = db.relationship("Comment", backref="user", lazy=True)
 
     # Trying to figure out a way to save all Event id values into a string that will
