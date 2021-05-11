@@ -221,8 +221,8 @@ def friendspage():
 
 
 
+# an attempt to create add friend route
 
-#an attempt to create add friend route
 @app.route('/friends/add_friend', methods=['GET', 'POST'])
 def add_friend(user_id):
     if session.get('user'):
@@ -230,12 +230,12 @@ def add_friend(user_id):
 
         if request.method == 'POST' and friendForm.validate_on_submit():
 
-            new_record = Friends(session['user_id'], user_id)
-            db.session.add(new_record)
+            new_friend = Friends(session['user_id'], user_id)
+            db.session.add(new_friend)
             db.session.commit()
 
         return redirect(url_for('friendspage'))
-    
+
     else:
         return redirect(url_for('login'))
 
