@@ -30,6 +30,9 @@
                 <p style="display:inline-block;">{{friend.username}}
             {% endfor %}
             </form>
+
+            <a id="addUserButton" href="{{ url_for('add_friend') }}">Add more friends!</a>
+
         </div>
 
     </body>
