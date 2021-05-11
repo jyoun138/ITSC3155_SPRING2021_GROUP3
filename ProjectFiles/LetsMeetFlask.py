@@ -242,12 +242,11 @@ def add_friend():
         return redirect(url_for('login'))
 
 @app.route('/friends/remove', methods=['GET', 'POST'])
-
 def remove_event(friend_id):
     if session.get('user'):
         db.session.query(Friend).filter_by(id=friend_id).delete()
         db.session.commit()
-    return redirect(url_for('index'))
+    return redirect(url_for('friendspage'))
 
 app.run(host=os.getenv('IP', '127.0.0.1'), port=int(os.getenv('PORT', 5000)), debug=True)
 
