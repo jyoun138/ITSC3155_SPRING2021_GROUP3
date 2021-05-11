@@ -57,3 +57,11 @@ class CommentForm(FlaskForm):
     comment = TextAreaField('Comment', validators=[Length(min=1)])
 
     submit = SubmitField('Add Comment')
+
+class FriendForm(FlaskForm):
+    class Meta:
+        csrf = False
+
+    username = StringField('Username', validators=[Length(1, 20)])
+
+    submit = SubmitField('Add User')
