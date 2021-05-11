@@ -223,7 +223,7 @@ def friendspage():
 
 # an attempt to create add friend route
 
-@app.route('/friends/add_friend', methods=['GET', 'POST'])
+@app.route('/friends/add_friend', methods=['POST'])
 def add_friend(user_id):
     if session.get('user'):
         friendForm = FriendForm()
