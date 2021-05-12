@@ -212,15 +212,15 @@ def calendarpage():
 @app.route('/friends')
 def friendspage():
     if session.get('user'):
-        # retrieve users from database
+        # displays list of friends
         list_friends = db.session.query(Friend).filter_by(user_id=session['user_id']).all()
         return render_template('LetsMeetFriends.html', friends=list_friends, user=session['user'])
     else:
         return redirect(url_for('login'))
 
 
-# an attempt to create add friend route
 
+# route for adding users as friends
 @app.route('/friends/new', methods=['GET', 'POST'])
 def add_friend():
     if session.get('user'):
@@ -241,12 +241,21 @@ def add_friend():
     else:
         return redirect(url_for('login'))
 
-@app.route('/friends/remove', methods=['GET', 'POST'])
+@app.route('/friends/<friend_id>')
+def friend_details(friend_id):
+    if session.get('user'):
+        my_friend = db.session.query(Friend).filter_by(id=friend_id).one()
+
+        return render_template('LetsMeetEvent.html', friend=my_friend, user=session['user'], user_id=session['user_id'])
+    return redirect(url_for('login'))
+
+@app.route('/friends/<friend_id>/remove_friend')
 def remove_friend(friend_id):
     if session.get('user'):
         db.session.query(Friend).filter_by(id=friend_id).delete()
         db.session.commit()
-    return redirect(url_for('friendspage'))
+        return redirect(url_for('friendspage'))
+    return redirect(url_for('login'))
 
 app.run(host=os.getenv('IP', '127.0.0.1'), port=int(os.getenv('PORT', 5000)), debug=True)
 

@@ -24,13 +24,16 @@
 
         <h3>Welcome {{user}} to the LetsMeet Site!</h3>
         <div class="friends">
-            <h3>Friends</h3>
+            <h3>Friends details</h3>
+
             <form>
-            {% for friend in friends %}
-                <p style="display:inline-block;">{{friend.friendUsername}} </p> <a href="{{ url_for('remove_event', friend_id=event.id) }}">Remove Event</a> <br>
-            {% endfor %}
+                <p> {{friend.friendUsername}}  </p>
             </form>
 
+
+            {% if friend.user_id == user_id %}
+                <a href="{{ url_for('remove_event', event_id=event.id) }}">Remove Event</a>
+            {% endif %}
             <a id="addUserButton" href="{{ url_for('add_friend') }}">Add more friends!</a>
 
         </div>

@@ -27,12 +27,12 @@
             <h3>Friends</h3>
             <form>
             {% for friend in friends %}
-                <p style="display:inline-block;">{{friend.friendUsername}} </p> <br>
+                <a href="{{ url_for('friend_details', friend_id=friend_id) }}" style="display:inline-block;">{{friend.friendUsername}} </a> <br>
             {% endfor %}
             </form>
 
             <a id="addUserButton" href="{{ url_for('add_friend') }}">Add more friends!</a>
-            <a href="{{ url_for('remove_friend') }}">Remove friends</a>
+            <a href="{{ url_for('remove_friend', friend_id=friend_id) }}">Remove friends</a>
 
         </div>
 
