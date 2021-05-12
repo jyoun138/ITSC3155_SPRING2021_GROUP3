@@ -244,12 +244,12 @@ def add_friend():
 @app.route('/friends/<friend_id>')
 def friend_details(friend_id):
     if session.get('user'):
-        my_friend = db.session.query(Friend).filter_by(id=friend_id).one()
+        my_friend = db.session.query(Friend).filter_by(id=friend_id, user_id=session['user_id']).one()
 
-        return render_template('LetsMeetEvent.html', friend=my_friend, user=session['user'], user_id=session['user_id'])
+        return render_template('LetsMeetRemoveFriend.html', friend=my_friend, user=session['user'], user_id=session['user_id'])
     return redirect(url_for('login'))
 
-@app.route('/friends/<friend_id>/remove_friend')
+@app.route('/friends/<friend_id>/remove_friend', methods=['POST'])
 def remove_friend(friend_id):
     if session.get('user'):
         db.session.query(Friend).filter_by(id=friend_id).delete()

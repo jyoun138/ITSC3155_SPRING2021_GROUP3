@@ -26,13 +26,18 @@
         <div class="friends">
             <h3>Friends details</h3>
 
-            <form>
-                <p> {{friend.friendUsername}}  </p>
-            </form>
+            <table>
+                <tr>
+                    <th>Friend Name</th>
+                </tr>
+                <tr>
+                    <td>{{friend.friendUsername}}</td>
+                </tr>
+        </table>
 
 
             {% if friend.user_id == user_id %}
-                <a href="{{ url_for('remove_event', event_id=event.id) }}">Remove Event</a>
+                <a href="{{ url_for('friend_details', friend_id=friend.id) }}">Remove friend</a>
             {% endif %}
             <a id="addUserButton" href="{{ url_for('add_friend') }}">Add more friends!</a>
 
