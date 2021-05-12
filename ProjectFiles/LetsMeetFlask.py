@@ -235,7 +235,7 @@ def add_friend():
             db.session.commit()
             return redirect(url_for('friendspage'))
         else:
-            list_users = db.session.query(User).all()
+            list_users = db.session.query(User).filter(User.id!=session['user_id']).all()
             return render_template('LetsMeetAddFriend.html', users=list_users, user=session['user'], form=friendForm)
 
     else:
