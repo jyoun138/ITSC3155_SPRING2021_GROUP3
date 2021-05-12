@@ -25,11 +25,17 @@
         <h3>Welcome {{user}} to the LetsMeet Site!</h3>
         <div class="friends">
             <h3>Friends</h3>
-            <form>
+
+            <table>
+            <tr>
+                <th>List of friends</th>
+            </tr>
             {% for friend in friends %}
-                <a href="{{ url_for('friend_details', friend_id=friend.id) }}" style="display:inline-block; color: black;">{{friend.friendUsername}} </a> <br>
+            <tr>
+                <td><a href="{{ url_for('friend_details', friend_id=friend.id) }}" style="display:inline-block; color: black;">{{friend.friendUsername}} </a></td>
+            </tr>
             {% endfor %}
-            </form>
+        </table>
 
             <a id="addUserButton" href="{{ url_for('add_friend') }}">Add more friends!</a>
 

@@ -252,7 +252,10 @@ def friend_details(friend_id):
 @app.route('/friends/<friend_id>/remove_friend', methods=['POST'])
 def remove_friend(friend_id):
     if session.get('user'):
-        db.session.query(Friend).filter_by(id=friend_id).delete()
+
+        my_friend = db.session.query(Friend).filter_by(id=friend_id).one()
+
+        db.session.delete(my_friend)
         db.session.commit()
         return redirect(url_for('friendspage'))
     return redirect(url_for('login'))
