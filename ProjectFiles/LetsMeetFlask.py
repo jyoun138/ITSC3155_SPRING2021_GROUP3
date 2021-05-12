@@ -249,7 +249,7 @@ def friend_details(friend_id):
         return render_template('LetsMeetRemoveFriend.html', friend=my_friend, user=session['user'], user_id=session['user_id'])
     return redirect(url_for('login'))
 
-@app.route('/friends/<friend_id>/remove_friend', methods=['POST'])
+@app.route('/friends/<friend_id>/remove_friend', methods=['GET', 'POST'])
 def remove_friend(friend_id):
     if session.get('user'):
 
