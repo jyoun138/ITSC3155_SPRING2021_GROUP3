@@ -222,7 +222,7 @@ def calendarpage():
     return redirect(url_for('login'))
 
 
-# route for friends list
+# route for viewing friends list
 @app.route('/friends')
 def friendspage():
     if session.get('user'):
@@ -255,6 +255,7 @@ def add_friend():
     else:
         return redirect(url_for('login'))
 
+# route for viewing details of friend and where the remove friend button is at
 @app.route('/friends/<friend_id>')
 def friend_details(friend_id):
     if session.get('user'):
@@ -263,6 +264,7 @@ def friend_details(friend_id):
         return render_template('LetsMeetRemoveFriend.html', friend=my_friend, user=session['user'], user_id=session['user_id'])
     return redirect(url_for('login'))
 
+# deletes friend from friends list
 @app.route('/friends/<friend_id>/remove_friend', methods=['GET', 'POST'])
 def remove_friend(friend_id):
     if session.get('user'):
