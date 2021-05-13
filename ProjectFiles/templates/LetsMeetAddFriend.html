@@ -30,15 +30,15 @@
                 <table>
                     <tr>
                         <th>User</th>
-                        <th>Rating</th>
+                        <!-- <th>Rating</th> -->
                     </tr>
                     {% for people in users %}
                     <tr>
                         <td style="display:inline-block;">{{people.username}}</td>
-                        {% if rating %}
-                            <td>show the avg rating</td>
-                        {% else %}
-                        <td>No ratings :(</td>
+                        <!-- {% if rating %} -->
+                            <td>4</td>
+                        <!-- {% else %} -->
+                        <!-- <td>No ratings :(</td> -->
                         {% endif %}
                     </tr>
                         <!-- <br> -->
