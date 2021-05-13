@@ -17,6 +17,7 @@
                     <li><a href="{{ url_for('get_events') }}"> My Events</a></li>
                     <li><a href="{{ url_for('new_event') }}">Add Event</a></li>
                     <li id="currPage"><a href="{{ url_for('friendspage') }}">Friends</a></li>
+                    <li><a href="{{ url_for('userRatings') }}">Ratings</a></li>
                     <li><a href="{{ url_for('logout') }}">Logout</a></li>
                 </ul>
             </nav>
@@ -26,21 +27,25 @@
         <div class="friends">
             <h3>Friends</h3>
 
+            {% if friends %} 
             <table>
             <tr>
                 <th>List of friends</th>
+                <th></th>
             </tr>
             {% for friend in friends %}
             <tr>
                 <td><a href="{{ url_for('friend_details', friend_id=friend.id) }}" style="display:inline-block; color: black;">{{friend.friendUsername}} </a></td>
+                <td><a href="{{ url_for('new_rating', friend_id=friend.id) }}">Add a rating</a></td>
             </tr>
             {% endfor %}
-        </table>
+            </table>
+            {% else %}
+            <p>You do not have friends yet. Browse and add friends</p>
+            {% endif %}
 
-            <a id="addUserButton" href="{{ url_for('add_friend') }}">Add more friends!</a>
-
+            <a id="addUserButton" href="{{ url_for('add_friend') }}">Add friends!</a>
         </div>
-
     </body>
     <footer>
         <p>

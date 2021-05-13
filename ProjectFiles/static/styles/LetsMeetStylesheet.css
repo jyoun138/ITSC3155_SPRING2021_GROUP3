@@ -25,19 +25,21 @@ header {
 
 #topNav {
     text-decoration: none;
-    position: relative;
-    position: fixed; /* Set the navbar to fixed position */
-    top: 0; /* Position the navbar at the top of the page */
-    width: 817px;
+    position: fixed;
+    top: 0px; 
+    width: 850px;
+    display: block;
+    text-align: center;
+    background-color: #232422;
 }
 
 #topNav li {
     text-decoration: none;
-    text-align: right;
+    text-align: center;
     display: inline-block;
-    padding: 0 15px 0 15px;
-    font-size: 150%;
-    margin-top: -15%;
+    padding: 0px 10px 0 15px;
+    font-size: 180%;
+    margin-top: 5px;
 }
 
 #topNav a {
@@ -57,7 +59,7 @@ h1 {
     font-family: LemonBrush;
     color: rgb(22, 22, 22);
     font-size: 650%;
-    padding: -25px 0 -25px 0;
+    text-shadow: 4px 4px 9px #ffa442 ;
     margin-top: 0%;
 }
 
@@ -69,13 +71,16 @@ h1 {
 /* formatting for the currently selected page */
 #currPage {
     color: violet;
-    border: 1px solid whitesmoke;
+    border-bottom: 5px solid rgb(247, 78, 0);
+    border-radius: 5px;
     background: url(./redFeather.png) no-repeat left center;
+    background-position: -2px;
 }
 
 h2, h3 {
     font-size: 26px;
-    background-color: #38ff8e;
+    background-color: #92b1ff;
+    border-radius: 5px;
     text-align: center;
     color: #362935;
     padding-top: 10px;
@@ -85,7 +90,7 @@ h2, h3 {
 
 /* Format for the user input */
 form {
-    #background-color: #f8f8f8;
+    background-color: #f8f8f8;
 	background-color: white;
 	border: solid 2px;
 	border-radius: 10px;
@@ -94,7 +99,7 @@ form {
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
-    #background-color: rgb(237, 237, 237);
+    background-color: rgb(237, 237, 237);
 }
 
 /* formatting for the labels for the form input boxes */
@@ -102,7 +107,6 @@ form {
 	float: left;
 	width: 5em;
 	text-align: right;
-    /*width: 5%;*/
 }
 
 #inputForm {
@@ -110,9 +114,6 @@ form {
 	margin-bottom: .5em;
 	padding: .25em;
 	font-size: 1em;
-	/* border: 1px solid #999; */
-	/* background-color: whitesmoke; */
-	/* border-radius: 5px; */
 }
 
 #newEventLabel, #dateLabel {
@@ -158,7 +159,7 @@ footer {
 table, th, td {
     border-radius: 10px;    
     border-collapse: collapse;
-    text-color: white;
+    color: black;
     margin-left: auto;
     margin-right: auto;
     }
@@ -168,17 +169,18 @@ table {
 }
 caption {
     color: #362935;
-    background-color: #83f29f;
+    /* background-color: #83f29f; */
+    background-color: #92b1ff;
     font-size: 30px;
-    border: 5px solid #83f29f;    
+    border: 5px solid #92b1ff;    
     border-radius: 10px;
     margin-top: 30px;
 }   
 
 td {
-    padding: 10px;
+    padding: 5px;
     height: 10ex;
-    background-color: #83f29f;
+    background-color: #92b1ff;
     color: #362935;
     text-align: center;
     font-family: "Monaco", monospace;
@@ -191,20 +193,18 @@ th{
     font-size: 22px;    
 }
 
-nav {
+/* nav {
   display: block;
   color: #232422;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   background-color: #232422;    
-}
+} */
 
 a{
     text-decoration: none;
-    padding: 12px;
     color: white;
-    font-family: "sans", monospace;       
 }
 
 #eventName {
@@ -213,10 +213,10 @@ a{
 
 /* Button CSS */
 input[type = submit] {
-  background-color: #05f092;
+  background-color: rgb(146, 177, 255);
   color: white;
   padding: 8px 8px 8px 8px;
-  border: 2px solid #07db86;
+  border: 2px solid #92b1ff;
   margin-left:12px;
   transition-duration: 0.4s;
   cursor: pointer;
@@ -233,4 +233,18 @@ input[type = submit]#submitButton:hover {
 }
 #prev{
     background-color: #ff03c4;
+}
+
+#addUserButton, #eventPage {
+    color: black;
+    text-decoration: underline;
+    font-size: larger;
+}
+
+#addUserButton:hover, #addRating:hover, #eventPage:hover {
+    color: white;
+}
+
+#mainCalendar {
+    width: 850px;
 }

@@ -17,6 +17,7 @@
                     <li><a href="{{ url_for('get_events') }}"> My Events</a></li>
                     <li><a href="{{ url_for('new_event') }}">Add Event</a></li>
                     <li><a href="{{ url_for('friendspage') }}">Friends</a></li>
+                    <li><a href="{{ url_for('userRatings') }}">Ratings</a></li>
                     <li><a href="{{ url_for('logout') }}">Logout</a></li>
                     <!-- <li><a href="{{ url_for('calendarpage') }}">Calendar</a></li> -->
                 </ul>
@@ -44,7 +45,7 @@
             <input id="submitButton" type="submit" value="Submit">
         </form>
 
-        <table>
+        <table id="mainCalendar">
             <caption>{{ calendar.month_name[month] }}</caption>
             <tr>
                 <th>Monday</th>

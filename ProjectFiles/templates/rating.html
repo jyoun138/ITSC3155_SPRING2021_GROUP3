@@ -16,34 +16,32 @@
                     <li><a href="{{ url_for('index') }}">Home</a></li>
                     <li><a href="{{ url_for('get_events') }}"> My Events</a></li>
                     <li><a href="{{ url_for('new_event') }}">Add Event</a></li>
-                    <li id="currPage"><a href="{{ url_for('friendspage') }}">Friends</a></li>
-                    <li><a href="{{ url_for('userRatings') }}">Ratings</a></li>
+                    <li><a href="{{ url_for('friendspage') }}">Friends</a></li>
+                    <li id="currPage"><a href="{{ url_for('userRatings') }}">Ratings</a></li>
                     <li><a href="{{ url_for('logout') }}">Logout</a></li>
                 </ul>
             </nav>
         </header>
-
+        <!--  -->
         <h3>Welcome {{user}} to the LetsMeet Site!</h3>
-        <div class="friends">
-            <h3>Friends details</h3>
-
-        <table>
-            <tr>
-                <th>Friend Name</th>
-            </tr>
-            <tr>
-                <td>{{friend.friendUsername}}</td>
-            </tr>
-        </table>
-
-        {% if friend.user_id == user_id %}
-            <a href="{{ url_for('remove_friend', friend_id=friend.id) }}">Remove friend</a> ||
-        {% endif %}
-        <a id="addUserButton" href="{{ url_for('add_friend') }}">Add more friends!</a>
-
-        </div>
-
+        <form action="{% if rating %}{{ rating.id }}{% else %}new{% endif %}" method="POST">
+            <span id="ratingLabel">
+                {{ form.rating.label}}
+            </span>
+            <span id="ratingForm">
+                {{ form.rating }}
+            </span>
+            <br>
+            {% if form.rating.errors %}
+                {% for error in form.rating.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+            <br>
+            {{ form.submit }}
+        </form>
     </body>
+
     <footer>
         <p>
             Group 3: Algos Anonymous project

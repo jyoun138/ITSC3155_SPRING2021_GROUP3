@@ -34,6 +34,7 @@ class User(db.Model):
     events = db.relationship("Event", backref="user", lazy=True)
     friends = db.relationship("Friend", backref="user", lazy=True)
     comments = db.relationship("Comment", backref="user", lazy=True)
+    rating = db.relationship("Rating", backref="user", cascade="all, delete-orphan", lazy=True)
 
     # Trying to figure out a way to save all Event id values into a string that will
     # be recognized by the database
@@ -87,3 +88,13 @@ class Comment(db.Model):
         self.content = content
         self.event_id = event_id
         self.user_id = user_id
+
+
+class Rating(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    rating = db.Column("rating", db.Integer)
+    user_id = db.Column("user_id", db.Integer, db.ForeignKey("user.id"))
+
+    def __init__(self, rating, user_id):
+        self.rating = rating
+        self.user_id = id

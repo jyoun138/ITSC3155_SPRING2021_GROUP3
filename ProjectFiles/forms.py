@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, DateField, TextAreaField, FileField
-from wtforms.validators import Length, DataRequired, EqualTo, Email
+from wtforms import StringField, PasswordField, SubmitField, DateField, TextAreaField, FileField, IntegerField
+from wtforms.validators import Length, DataRequired, EqualTo, Email, NumberRange
 from wtforms import ValidationError
 from models import User
 from database import db
@@ -67,3 +67,10 @@ class FriendForm(FlaskForm):
     friendUsername = StringField('Username', validators=[Length(1, 20)])
 
     add = SubmitField('Add User')
+
+
+class RatingForm(FlaskForm):
+    class Meta:
+        csrf = False
+    rating = IntegerField('Rating', validators=[NumberRange(min=1, max=5, message="Enter a number from 1 to 5, inclusive")])
+    submit = SubmitField('Submit Rating')

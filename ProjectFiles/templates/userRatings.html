@@ -16,8 +16,8 @@
                     <li><a href="{{ url_for('index') }}">Home</a></li>
                     <li><a href="{{ url_for('get_events') }}"> My Events</a></li>
                     <li><a href="{{ url_for('new_event') }}">Add Event</a></li>
-                    <li id="currPage"><a href="{{ url_for('friendspage') }}">Friends</a></li>
-                    <li><a href="{{ url_for('userRatings') }}">Ratings</a></li>
+                    <li><a href="{{ url_for('friendspage') }}">Friends</a></li>
+                    <li id="currPage"><a href="{{ url_for('userRatings') }}">Ratings</a></li>
                     <li><a href="{{ url_for('logout') }}">Logout</a></li>
                 </ul>
             </nav>
@@ -25,20 +25,23 @@
 
         <h3>Welcome {{user}} to the LetsMeet Site!</h3>
         <div class="users">
-            <h3>Users</h3>
+            <h3>Users and their ratings</h3>
+
             <form>
                 <table>
                     <tr>
                         <th>User</th>
                         <th>Rating</th>
+                        <th></th>
                     </tr>
-                    {% for user in users %}
+                    {% for people in users %}
                     <tr>
-                        <td style="display:inline-block;">{{user.username}}</td>
-                        {% if rating %}
+                        <td style="display:inline-block;">{{people.username}}</td>
+                        {% if ratings %}
                             <td>show the avg rating</td>
                         {% else %}
-                        <td>No ratings :(</td>
+                        <td>No rating :(</td>
+                        <td><a href="{{url_for('new_rating', friend_id=people.id)}}">Add rating</a></td>
                         {% endif %}
                     </tr>
                         <br>
@@ -46,23 +49,9 @@
 
                 </table>
             </form>
-            <br>
-            <p>
-                Please enter the username from the following list above to add them to your friends list.
-                Enter only one username into the text box.
-            </p>
-            <br>
-        </div>
-        <form action="{% if friends %}{{ friends.id }}{% else %}new{% endif %}" method="post">
-            <span id="newEventLabel">
-                {{ form.friendUsername.label }}
-            </span>
-            <span id="newEventInput">
-                {{ form.friendUsername }}
-            </span>
-            {{form.add}}
-        </form>
+
     </body>
+
     <footer>
         <p>
             Group 3: Algos Anonymous project
