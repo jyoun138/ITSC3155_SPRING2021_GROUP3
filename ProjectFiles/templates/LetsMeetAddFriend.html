@@ -26,15 +26,15 @@
         <h3>Welcome {{user}} to the LetsMeet Site!</h3>
         <div class="users">
             <h3>Users</h3>
-            <form>
+        <br>
                 <table>
                     <tr>
                         <th>User</th>
                         <th>Rating</th>
                     </tr>
-                    {% for user in users %}
+                    {% for people in users %}
                     <tr>
-                        <td style="display:inline-block;">{{user.username}}</td>
+                        <td style="display:inline-block;">{{people.username}}</td>
                         {% if rating %}
                             <td>show the avg rating</td>
                         {% else %}
@@ -45,12 +45,13 @@
                     {% endfor %}
 
                 </table>
-            </form>
             <br>
+
             <p>
                 Please enter the username from the following list above to add them to your friends list.
                 Enter only one username into the text box.
             </p>
+
             <br>
         </div>
         <form action="{% if friends %}{{ friends.id }}{% else %}new{% endif %}" method="post">
@@ -61,7 +62,20 @@
                 {{ form.friendUsername }}
             </span>
             {{form.add}}
+
+            <br>
+
+            {% if form.friendUsername.errors %}
+                <span id="errors">
+                    {% for error in form.friendUsername.errors %}
+                    {{ error }}
+                    <br>
+                    {% endfor %}
+                </span>
+            {% endif %}
+
         </form>
+
     </body>
     <footer>
         <p>
