@@ -35,7 +35,7 @@
             </tr>
             {% for friend in friends %}
             <tr>
-                <td><a href="{{ url_for('friend_details', friend_id=friend.id) }}" style="display:inline-block;">{{friend.friendUsername}} </a></td>
+                <td><a href="{{ url_for('friend_details', friend_id=friend.id) }}">{{friend.friendUsername}} </a></td>
                 <td><a href="{{ url_for('new_rating', friend_id=friend.id) }}">Add a rating</a></td>
             </tr>
             {% endfor %}
