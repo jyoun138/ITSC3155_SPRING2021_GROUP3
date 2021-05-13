@@ -97,4 +97,4 @@ class Rating(db.Model):
 
     def __init__(self, rating, user_id):
         self.rating = rating
-        self.user_id = id
+        self.user_id = user_id

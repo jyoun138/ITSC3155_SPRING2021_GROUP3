@@ -42,9 +42,9 @@
                         {% else %}
                         <td>No rating :(</td>
                         <td><a href="{{url_for('new_rating', friend_id=people.id)}}">Add rating</a></td>
+                        <!-- <br> -->
                         {% endif %}
                     </tr>
-                        <br>
                     {% endfor %}
 
                 </table>
