@@ -27,8 +27,8 @@
             <h3>Users</h3>
 
             <form>
-                {% for user in users %}
-                    <p style="display:inline-block;">{{user.username}}</p> <br>
+                {% for people in users %}
+                    <p style="display:inline-block;">{{people.username}}</p> <br>
                 {% endfor %}
             </form>
 
@@ -54,8 +54,18 @@
             </span>
             {{form.add}}
 
-        </form>
+            <br>
 
+            {% if form.friendUsername.errors %}
+            <span id="errors">
+                {% for error in form.friendUsername.errors %}
+                {{ error }}
+                <br>
+                {% endfor %}
+            </span>
+        {% endif %}
+
+        </form>
 
     </body>
     <footer>
