@@ -17,6 +17,7 @@
                     <li><a href="{{ url_for('get_events') }}"> My Events</a></li>
                     <li><a href="{{ url_for('new_event') }}">Add Event</a></li>
                     <li id="currPage"><a href="{{ url_for('friendspage') }}">Friends</a></li>
+                    <li><a href="{{ url_for('userRatings') }}">Ratings</a></li>
                     <li><a href="{{ url_for('logout') }}">Logout</a></li>
                 </ul>
             </nav>
@@ -25,12 +26,23 @@
         <h3>Welcome {{user}} to the LetsMeet Site!</h3>
         <div class="users">
             <h3>Users</h3>
-
             <form>
-                {% for people in users %}
-                    <p style="display:inline-block;">{{people.username}}</p> <br>
-                {% endfor %}
-            </form>
+                <table>
+                    <tr>
+                        <th>User</th>
+                        <th>Rating</th>
+                    </tr>
+                    {% for user in users %}
+                    <tr>
+                        <td style="display:inline-block;">{{user.username}}</td>
+                        {% if rating %}
+                            <td>show the avg rating</td>
+                        {% else %}
+                        <td>No ratings :(</td>
+                        {% endif %}
+                    </tr>
+                        <br>
+                    {% endfor %}
 
         <br>
 
@@ -40,19 +52,43 @@
         </p>
 
         <br>
+=======
+                <table>
+                    <tr>
+                        <th>User</th>
+                        <th>Rating</th>
+                    </tr>
+                    {% for user in users %}
+                    <tr>
+                        <td style="display:inline-block;">{{user.username}}</td>
+                        {% if rating %}
+                            <td>show the avg rating</td>
+                        {% else %}
+                        <td>No ratings :(</td>
+                        {% endif %}
+                    </tr>
+                        <br>
+                    {% endfor %}
+>>>>>>> 4107c39fd32c3a65fd55bfac822bac50f1937189
 
+                </table>
+            </form>
+            <br>
+            <p>
+                Please enter the username from the following list above to add them to your friends list.
+                Enter only one username into the text box.
+            </p>
+            <br>
         </div>
-
         <form action="{% if friends %}{{ friends.id }}{% else %}new{% endif %}" method="post">
-
             <span id="newEventLabel">
                 {{ form.friendUsername.label }}
             </span>
-
             <span id="newEventInput">
                 {{ form.friendUsername }}
             </span>
             {{form.add}}
+<<<<<<< HEAD
 
             <br>
 
@@ -67,6 +103,14 @@
 
         </form>
 
+||||||| 907dc11
+
+        </form>
+
+
+=======
+        </form>
+>>>>>>> 4107c39fd32c3a65fd55bfac822bac50f1937189
     </body>
     <footer>
         <p>

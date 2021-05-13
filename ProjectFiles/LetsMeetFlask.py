@@ -7,11 +7,11 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.utils import secure_filename
 
 from database import db
-from models import Event as Event, User as User, RSVP as RSVP, Comment as Comment, Friend as Friend
+from models import Event as Event, User as User, RSVP as RSVP, Comment as Comment, Friend as Friend, Rating as Rating
 from datetime import datetime, date
 import calendar
 import math as math
-from forms import RegisterForm, LoginForm, EventForm, CommentForm, FriendForm
+from forms import RegisterForm, LoginForm, EventForm, CommentForm, FriendForm, RatingForm
 import bcrypt
 
 app = Flask(__name__)  # create an app
@@ -273,6 +273,29 @@ def remove_friend(friend_id):
         db.session.commit()
         return redirect(url_for('friendspage'))
     return redirect(url_for('login'))
+
+@app.route('/userRatings')
+def userRatings():
+    if session.get('user'):
+        users = db.session.query(User).all()
+        allRatings = db.session.query(Rating).all()
+        return render_template('userRatings.html', users=users, ratings=allRatings, user=session['user'], user_id=session['user_id'])
+    return redirect(url_for('login'))
+
+@app.route('/userRatings/<friend_id>', methods=['POST', 'GET'])
+def new_rating(friend_id):
+    if session.get('user'):
+        ratingForm = RatingForm()
+        if request.method == 'POST' and ratingForm.validate_on_submit():
+            ratingNumber = request.form['rating']
+            newRating = Rating(rating=ratingNumber, user_id=friend_id)
+            db.session.add(newRating)
+            db.session.commit()
+            return redirect(url_for('userRatings'))
+        else:
+            return render_template('rating.html', user=session['user'], form=ratingForm, user_id=friend_id)
+    else:
+        return redirect(url_for('login'))
 
 app.run(host=os.getenv('IP', '127.0.0.1'), port=int(os.getenv('PORT', 5000)), debug=True)
 
