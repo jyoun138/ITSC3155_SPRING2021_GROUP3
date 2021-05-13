@@ -31,11 +31,13 @@
             <tr>
                 <th>Title</th>
                 <th>Date</th>
+                <th>Picture</th>
             </tr>
             {% for event in events %}
             <tr>
                 <td><a href="{{ url_for('get_event', event_id=event.id) }}">{{ event.title }}</a></td>
                 <td>{{ event.date }}</td>
+                <td><a href="{{ url_for('get_image', id=event.id) }}"> {{ "View Image" }}</a></td>
             </tr>
             {% endfor %}
         </table>
