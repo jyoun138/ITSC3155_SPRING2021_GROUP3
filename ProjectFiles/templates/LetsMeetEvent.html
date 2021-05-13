@@ -32,11 +32,13 @@
                 <th>Title</th>
                 <th>Text</th>
                 <th>Date</th>
+                <th>Picture</th>
             </tr>
             <tr>
                 <td>{{ event.title }}</td>
                 <td>{{ event.text }}</td>
                 <td>{{ event.date }}</td>
+                <td><a href="{{ url_for('get_image', id=event.id) }}"> {{ "View Image" }}</a></td>
             </tr>
         </table>
 
