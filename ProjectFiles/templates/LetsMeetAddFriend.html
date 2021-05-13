@@ -32,9 +32,9 @@
                         <th>User</th>
                         <th>Rating</th>
                     </tr>
-                    {% for user in users %}
+                    {% for people in users %}
                     <tr>
-                        <td style="display:inline-block;">{{user.username}}</td>
+                        <td style="display:inline-block;">{{people.username}}</td>
                         {% if rating %}
                             <td>show the avg rating</td>
                         {% else %}
