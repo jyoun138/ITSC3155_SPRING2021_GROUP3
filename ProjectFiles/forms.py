@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, DateField, TextAreaField
+from wtforms import StringField, PasswordField, SubmitField, DateField, TextAreaField, FileField
 from wtforms.validators import Length, DataRequired, EqualTo, Email
 from wtforms import ValidationError
 from models import User
@@ -46,6 +46,8 @@ class EventForm(FlaskForm):
     eventText = StringField('Event Text', validators=[Length(1, 20)])
 
     eventDate = DateField('Event Date', format='%Y-%m-%d')
+
+    picture = FileField('Attach an Image Below')
 
     submit = SubmitField('Submit')
 

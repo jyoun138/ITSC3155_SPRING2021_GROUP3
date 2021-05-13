@@ -9,15 +9,22 @@ class Event(db.Model):
     date = db.Column("date", db.String(50))
     user_id = db.Column("user_id", db.Integer, db.ForeignKey('user.id'))
     comments = db.relationship("Comment", backref="note", cascade="all, delete-orphan", lazy=True)
+    image = db.Column("image", db.Text)
+    image_name = db.Column("image_name", db.Text)
+    image_type = db.Column("image_type", db.Text)
 
-    def __init__(self, title, text, date, id):
+    def __init__(self, title, text, date, id, image, image_name, image_type):
         self.title = title
         self.text = text
         self.date = date
         self.user_id = id
+        self.image = image
+        self.image_name = image_name
+        self.image_type = image_type
 
     def __repr__(self):
-        return f"Event('{self.id}', '{self.title}', '{self.text}, '{self.date}')"
+        return f"Event('{self.id}', '{self.title}', '{self.text}, '{self.date}', '{self.image}', '{self.image_name}'," \
+               f"'{self.image_type}')"
 
 
 class User(db.Model):

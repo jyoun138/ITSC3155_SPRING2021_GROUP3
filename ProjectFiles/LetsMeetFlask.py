@@ -1,9 +1,10 @@
 import os  # os is used to get environment variables IP & PORT
 from flask import Flask  # Flask is the web app that we will customize
 from flask import render_template
-from flask import request
+from flask import request, Response
 from flask import redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
+from werkzeug.utils import secure_filename
 
 from database import db
 from models import Event as Event, User as User, RSVP as RSVP, Comment as Comment, Friend as Friend
@@ -103,6 +104,13 @@ def get_event(event_id):
     return redirect(url_for('login'))
 
 
+@app.route('/images/<int:id>')
+def get_image(id):
+    if session.get('user'):
+        my_event = db.session.query(Event).filter_by(id=id).first()
+        return Response(my_event.image, mimetype=my_event.image_type)
+
+
 # Trying to figure out how to add RSVP'd Event id's to Users database (see models.py/Users)
 @app.route('/events/rsvp/<event_id>', methods=['GET', 'POST'])
 def RSVP_event(event_id):
@@ -123,7 +131,13 @@ def new_event():
             title = request.form['title']
             text = request.form['eventText']
             eventDate = request.form['eventDate']
-            new_record = Event(title=title, text=text, date=eventDate, id=session['user_id'])
+
+            picture = request.files['picture']
+            filename = secure_filename(picture.filename)
+            mimetype = picture.mimetype
+
+            new_record = Event(title=title, text=text, date=eventDate, id=session['user_id'], image=picture.read(),
+                               image_name=filename, image_type=mimetype)
             db.session.add(new_record)
             db.session.commit()
             return redirect(url_for('get_events'))

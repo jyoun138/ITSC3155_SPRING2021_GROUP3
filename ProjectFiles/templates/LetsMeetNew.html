@@ -30,7 +30,7 @@
                 enter your new event in the calendar.
             </p>
 
-            <form action="{% if event %}{{ event.id }}{% else %}new{% endif %}" method="POST">
+            <form action="{% if event %}{{ event.id }}{% else %}new{% endif %}" method="POST" enctype=multipart/form-data>
                 <!-- first label and input -->
                 <span id="newEventLabel">
                     {{ form.title.label }}
@@ -78,6 +78,17 @@
                         {% endfor %}
                     </span>
                 {% endif %}
+                <!--MSO edited to to include picture field created in forms -->
+                <br>
+                <br>
+                <span id="addImageLabel">
+                    {{ form.picture.label }}
+                </span>
+                    <br>
+                    <br>
+                <span id="addImageInput">
+                    {{ form.picture }}
+                </span>
                 <br>
                 <br>
                 {{ form.submit }}
